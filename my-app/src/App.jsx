@@ -9,6 +9,7 @@ import sahara from './assets/images/Saharatimeline.png'
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import Paragraph from './assets/components/paragraph.jsx'
+import CursorDot from './assets/components/CursorDot.jsx';
 
 function App() {
 
@@ -120,6 +121,7 @@ useEffect(() => {
 
   return (
     <>
+     <CursorDot />
     <div className='App'>
       <div class="blur-bottom"></div>
       <div className='nav-wrapper'>
