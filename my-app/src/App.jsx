@@ -141,8 +141,8 @@ useEffect(() => {
 
   return (
     <>
-     <CursorDot />
     <div className='App'>
+     <CursorDot />
       <div class="blur-bottom"></div>
       <div className='nav-wrapper'>
         <div className='navigation-container'>
@@ -171,9 +171,9 @@ useEffect(() => {
           <span className='arabic-text'>مروان المزاريحي</span>
         </div>
         <div className='header-left'>
-          <img src={instagramlogo} alt="Instagram Logo" className='social-logo' />
-          <img src={twitterlogo} alt="Twitter Logo" className='social-logo' />
-          <div className='get-cv'>
+          <img src={instagramlogo} alt="Instagram Logo" className='social-logo' data-cursor="Instagram"/>
+          <img src={twitterlogo} alt="Twitter Logo" className='social-logo' data-cursor="Twitter"/>
+          <div className='get-cv' data-cursor="Download">
             <h4>GET CV</h4>
           </div>
         </div>
@@ -186,7 +186,7 @@ useEffect(() => {
             <img src={moroccanlogo} alt="Moroccan Logo" className='moroccan-logo' /> ENGINEER
         </h2>
       </div>
-        <div className='open-to-work' onClick={() => scrollToSection('contact')}>
+        <div className='open-to-work' onClick={() => scrollToSection('contact')} data-cursor="Contact">
           <h4>Open to <span className='highlight-title'>WORK</span> </h4>
           <div className="green-circle"></div>
           <div className="white-circle"></div>
@@ -199,17 +199,17 @@ useEffect(() => {
     <section className='crafts-container' id='craft'>
         <h2> <img src={tstreched} alt="T-Stretched" className='t-stretched-title'/> CRAF<span className='hide-letter'>T</span>S</h2>
         <div className='crafts-wrapper'>
-          <div className='craft one'>
+          <div className='craft one' data-cursor="Open">
           </div>
-          <div className='craft six'>
+          <div className='craft six' data-cursor="Open">
           </div>
-          <div className='craft three'>
+          <div className='craft three' data-cursor="Open">
           </div>
-          <div className='craft four'>
+          <div className='craft four' data-cursor="Open">
           </div>
-          <div className='craft five'>
+          <div className='craft five' data-cursor="Open">
           </div>
-          <div className='craft two'>
+          <div className='craft two' data-cursor="Open">
           </div>
         </div>
     </section>
@@ -254,9 +254,9 @@ useEffect(() => {
         ))}
 
         <div className='description-slider'>
-          <FaCircleArrowLeft className='slider-button' onClick={ handlePrev } disabled={currentIndex === 0}/>
+          <FaCircleArrowLeft className='slider-button' onClick={ handlePrev } disabled={currentIndex === 0} data-cursor="Previous"/>
           <h4><span className='bold'>{currentIndex + 1}</span> Of <span className='bold'>5</span></h4>
-          <FaCircleArrowRight className='slider-button' onClick={ handleNext } disabled={currentIndex === 4}/>
+          <FaCircleArrowRight className='slider-button' onClick={ handleNext } disabled={currentIndex === 4} data-cursor="Next"/>
         </div>
       </div>
       </div>
@@ -357,19 +357,19 @@ useEffect(() => {
       <h3>Whether you’re interested in working together, have a project in mind, or just want to say hello, feel free to reach out. I’m always open to new ideas, creative exchanges, and meaningful collaborations.</h3>
       </div>
       <div className='contact-socials'>
-        <div className='socials' onClick={() => navigator.clipboard.writeText('elmozariahimarouane05@gmail.com')}>
+        <div className='socials' onClick={() => navigator.clipboard.writeText('elmozariahimarouane05@gmail.com')} data-cursor="Copy Email">
           <h2>Email</h2>
           <FaRegCopy className='icon-social' />
         </div>
-          <div className='socials'>
+          <div className='socials' data-cursor="Visit">
           <h2>X - Twitter</h2>
           <FaArrowRight className='icon-social rotate' />
         </div>
-        <div className='socials'>
-          <h2>LinkdIn</h2>
+        <div className='socials' data-cursor="Visit">
+          <h2>LinkedIn</h2>
           <FaArrowRight className='icon-social rotate' />
         </div>
-        <div className='socials'>
+        <div className='socials' data-cursor="Visit">
           <h2>Behance</h2>
           <FaArrowRight className='icon-social rotate' />
         </div>
