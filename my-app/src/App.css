@@ -163,16 +163,16 @@ h4 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px; /* Adjust height as needed */
+  height: 200px; /* Adjust height as needed */
   pointer-events: none; /* Let clicks pass through */
 
   /* Blur background */
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
 
   /* Gradient mask to fade the blur */
-  mask-image: linear-gradient(to top, black, transparent);
-  -webkit-mask-image: linear-gradient(to top, black, transparent);
+  mask-image: linear-gradient(to top, var(--color-background), transparent);
+  -webkit-mask-image: linear-gradient(to top, var(--color-background), transparent);
 
   z-index: 999; /* Above content, below modal/UI if any */
 }
@@ -439,6 +439,7 @@ h4 {
   border-radius: 50px;
   transition: all 0.4s ease;
   margin-top: var(--margin-xxl);
+  cursor: pointer;
   
   /* Animation */
   opacity: 0;
@@ -1216,6 +1217,108 @@ h4 {
   margin-top: 2.5rem;
 }
 
+
+.contact-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+  margin-top: 8rem;
+  width: 80vw;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* En dessous de la navigation */
+  padding-bottom: 5rem;
+  pointer-events: auto; /* Permet les interactions sur le contenu */
+}
+.contact-wrapper{
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  padding-bottom: 14rem;
+  padding-right: 4rem;
+  margin-left: 5rem;
+}
+.contact-container h1 {
+  font-size: var(--fs-h3);
+  background: linear-gradient(to right, #e17a46, #f09642);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: "Florence", sans-serif;
+  margin-bottom: 0;
+  line-height: 0.73;
+  letter-spacing: 2px;
+}
+.contact-container h2{
+  font-size: var(--fs-small);
+  color: var(--color-primary);
+  font-family: var(--ff), sans-serif;
+  font-weight: var(--fw-regular);
+  line-height: 1.8;
+  letter-spacing: 1px;
+
+  transition: all 0.3s ease;
+}
+.contact-container h3{
+  font-size: var(--fs-small);
+  color: var(--color-primary);
+  font-family: var(--ff), sans-serif;
+  font-weight: var(--fw-light);
+  line-height: 1.8;
+  letter-spacing: 1px;
+  margin-top: 2.5rem;
+}
+.contact-socials{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.socials{
+  display: flex;
+  width: 60%;
+  height: 4rem;
+  border-bottom: #cdcdcb 1px solid;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+   transition: all 0.3s ease;
+}
+.socials:hover h2 {
+  transform: scale(0.9);
+  color: var(--color-primary-hover);
+}
+.socials:hover .icon-social {
+  transform: scale(0.9);
+  color: var(--color-primary-hover);
+}
+.icon-social{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: auto;
+  transition: all 0.3s ease;
+
+}
+.icon-social.rotate{
+  transform: rotate(-45deg);
+}
+.vibrance-portfolio{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: -10vw;
+  width: 100vw;
+  height: auto;
+  z-index: -1; /* Behind the content */
+}
 
 
 /* Landing Page Animations */

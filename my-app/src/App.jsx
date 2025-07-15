@@ -26,6 +26,9 @@ import { SiBlender } from "react-icons/si";
 import { SiCinema4D } from "react-icons/si";
 import zbrush from './assets/images/zbrush.webp'
 import substancepainter from './assets/images/substance-painter.png'
+import { FaRegCopy } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+import vibrance from './assets/images/vibrancePortfolio.png'
 
 
 function App() {
@@ -183,7 +186,7 @@ useEffect(() => {
             <img src={moroccanlogo} alt="Moroccan Logo" className='moroccan-logo' /> ENGINEER
         </h2>
       </div>
-        <div className='open-to-work'>
+        <div className='open-to-work' onClick={() => scrollToSection('contact')}>
           <h4>Open to <span className='highlight-title'>WORK</span> </h4>
           <div className="green-circle"></div>
           <div className="white-circle"></div>
@@ -344,6 +347,31 @@ useEffect(() => {
           </span>
           </div>
         </div>
+        </div>
+      </div>
+    </section>
+    <section className='contact-container' id='contact'>
+      <img src={vibrance} alt="Vibrance Portfolio" className='vibrance-portfolio' />
+      <div className='contact-wrapper'>
+      <h1>Let's Connect</h1>
+      <h3>Whether you’re interested in working together, have a project in mind, or just want to say hello, feel free to reach out. I’m always open to new ideas, creative exchanges, and meaningful collaborations.</h3>
+      </div>
+      <div className='contact-socials'>
+        <div className='socials' onClick={() => navigator.clipboard.writeText('elmozariahimarouane05@gmail.com')}>
+          <h2>Email</h2>
+          <FaRegCopy className='icon-social' />
+        </div>
+          <div className='socials'>
+          <h2>X - Twitter</h2>
+          <FaArrowRight className='icon-social rotate' />
+        </div>
+        <div className='socials'>
+          <h2>LinkdIn</h2>
+          <FaArrowRight className='icon-social rotate' />
+        </div>
+        <div className='socials'>
+          <h2>Behance</h2>
+          <FaArrowRight className='icon-social rotate' />
         </div>
       </div>
     </section>
