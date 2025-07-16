@@ -143,7 +143,12 @@ useEffect(() => {
     <>
     <div className='App'>
      <CursorDot />
-      <div class="blur-bottom"></div>
+      <div class="blur-bottom"> 
+          <div className='bottom-left'>
+          <h3>MAROUANE ELMOZARIAHI </h3>
+          <span className='arabic-text'>مروان المزاريحي</span>
+        </div>
+      </div>
       <div className='nav-wrapper'>
         <div className='navigation-container'>
           <div className='navig-clock-main'>

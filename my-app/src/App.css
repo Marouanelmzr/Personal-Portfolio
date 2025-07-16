@@ -191,6 +191,26 @@ h4 {
 
   z-index: 999; /* Above content, below modal/UI if any */
 }
+.bottom-left{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 2rem;
+  left: 10rem;
+  z-index: 1000; /* Above the blur effect */
+}
+.bottom-left h3 {
+  font-size: var(--fs-xsmall);
+  color: var(--color-primary-light);
+  
+  margin: 0;
+}
+.bottom-left .arabic-text {
+  font-size: var(--fs-body);
+  color: var(--color-primary-light);
+  text-align: right;
+  margin-top: 0.2rem;
+}
 .Landing-section{
   display: flex;
   justify-content: center;
