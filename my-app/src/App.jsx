@@ -137,17 +137,45 @@ useEffect(() => {
   }, 50); // slight delay to allow DOM refresh
 }, [currentIndex]);
 
+useEffect(() => {
+  const app = document.querySelector('.App');
+  if (!app) return;
+
+  const handleScroll = () => {
+    const scrollTop = app.scrollTop;
+    const scrollHeight = app.scrollHeight - app.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    const progressBar = document.getElementById("scroll-progress");
+    const progresscontainer = document.querySelector('.bottom-progress');
+    if (progressBar) {
+      progressBar.style.width = `${scrollPercent}%`;
+    }
+    if (progresscontainer) {
+      progresscontainer.classList.toggle('visible', scrollPercent >= 5);
+    }
+  };
+
+  app.addEventListener("scroll", handleScroll);
+  return () => app.removeEventListener("scroll", handleScroll);
+}, []);
+
 
 
   return (
     <>
     <div className='App'>
      <CursorDot />
-      <div class="blur-bottom"> 
-          <div className='bottom-left'>
+      <div className='bottom-progress'>
+        <div className='bottom-left'>
           <h3>MAROUANE ELMOZARIAHI </h3>
           <span className='arabic-text'>مروان المزاريحي</span>
         </div>
+        <div className='scroll-baseline'>
+        <div id="scroll-progress"></div>
+        </div>
+        <h3 className='getcv-bottom'>GET CV </h3>
+      </div>
+      <div class="blur-bottom"> 
       </div>
       <div className='nav-wrapper'>
         <div className='navigation-container'>
