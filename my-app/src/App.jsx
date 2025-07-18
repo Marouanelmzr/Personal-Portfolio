@@ -29,6 +29,8 @@ import substancepainter from './assets/images/substance-painter.png'
 import { FaRegCopy } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import vibrance from './assets/images/vibrancePortfolio.png'
+import xelopsimage from './assets/images/xelopsimage.jpg'
+import mzrwebsite from './assets/images/mzrwebsite.jpg'
 
 
 function App() {
@@ -232,17 +234,39 @@ useEffect(() => {
     <section className='crafts-container' id='craft'>
         <h2> <img src={tstreched} alt="T-Stretched" className='t-stretched-title'/> CRAF<span className='hide-letter'>T</span>S</h2>
         <div className='crafts-wrapper'>
+          <div className='wrapper-crafts-first'>
           <div className='craft one' data-cursor="Open">
-          </div>
-          <div className='craft six' data-cursor="Open">
+            <div className='craft-image-container'>
+              <img src={xelopsimage} alt="Xelops Project" className='craft-image' />
+            </div>
+            <div className='craft-description'>
+              <div>
+                <h3>XELOPS Absence management</h3>
+                <h4>June 2025</h4>
+              </div>
+              <FaArrowRight className='icon-arrow' />
+            </div>
           </div>
           <div className='craft three' data-cursor="Open">
+            <div className='craft-image-container two'>
+              <img src={mzrwebsite} alt="Xelops Project" className='craft-image two' />
+            </div>
+            <div className='craft-description'>
+              <div>
+                <h3>MZR UI/UX Design</h3>
+                <h4>December 2025</h4>
+              </div>
+              <FaArrowRight className='icon-arrow' />
+            </div>
           </div>
+          </div>
+          <div className='wrapper-crafts-small'>
           <div className='craft four' data-cursor="Open">
           </div>
           <div className='craft five' data-cursor="Open">
           </div>
           <div className='craft two' data-cursor="Open">
+          </div>
           </div>
         </div>
     </section>
