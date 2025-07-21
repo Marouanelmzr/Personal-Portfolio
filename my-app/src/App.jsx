@@ -163,6 +163,8 @@ useEffect(() => {
 
 
 
+
+
   return (
     <>
     <div className='App'>
@@ -414,7 +416,20 @@ useEffect(() => {
       <h3>Whether you’re interested in working together, have a project in mind, or just want to say hello, feel free to reach out. I’m always open to new ideas, creative exchanges, and meaningful collaborations.</h3>
       </div>
       <div className='contact-socials'>
-        <div className='socials' onClick={() => navigator.clipboard.writeText('elmozariahimarouane05@gmail.com')} data-cursor="Copy Email">
+        <div 
+          className="socials" 
+          data-cursor="Copy Email"
+          onClick={() => {
+            navigator.clipboard.writeText('elmozariahimarouane05@gmail.com');
+            window.dispatchEvent(new CustomEvent("cursor-label", {
+            detail: { label: "Copied!" }
+          }));
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent("cursor-label", {
+            detail: { label: "Copy Email" }
+          }));
+          }, 2000);
+        }}>
           <h2>Email</h2>
           <FaRegCopy className='icon-social' />
         </div>

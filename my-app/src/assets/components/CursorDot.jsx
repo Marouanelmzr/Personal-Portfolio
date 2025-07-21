@@ -33,7 +33,7 @@ useEffect(() => {
     while (el && el !== document) {
       const label = el.getAttribute("data-cursor");
       if (label) {
-        console.log("Hovered:", el, label); // ✅ should now log
+        console.log("Hovered:", el, label); 
         setLabel(label);
         return;
       }
@@ -57,9 +57,22 @@ useEffect(() => {
   };
 }, []);
 
+useEffect(() => {
+  const handleCustomLabel = (e) => {
+    const { label } = e.detail;
+    setLabel(label);
+  };
+
+  window.addEventListener("cursor-label", handleCustomLabel);
+
+  return () => {
+    window.removeEventListener("cursor-label", handleCustomLabel);
+  };
+}, []);
+
   return (
     <div>
-      <div ref={dotRef}  className={`cursor-dot ${label ? "hover" : ""}`}>
+      <div ref={dotRef}  className={`cursor-dot ${label ? "hover" : ""} ${label === "Copied!" ? "copied" : ""}`}>
         {label && <span className="cursor-label">{label}</span>}
       </div>
     </div>

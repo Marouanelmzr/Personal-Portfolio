@@ -149,6 +149,11 @@ h4 {
   border-radius: 999px;
   transition: width 0.2s ease, height 0.2s ease, transform 0.2s ease, ;
 }
+.cursor-dot.copied {
+  background-color: var(--color-green);
+  color: var(--color-background);
+  transition: all 0.2s ease;
+}
 
 
 .cursor-dot.hovered {
@@ -722,7 +727,7 @@ h4 {
 .craft-image-container{
   width: 96%;
   margin-left: 2%;
-  height: 74%;
+  height: 83%;
   margin-top: 2%;
   border-radius: 10px;
   overflow: hidden;
@@ -736,9 +741,10 @@ h4 {
   overflow: hidden;
 }
 .craft-image {
-  width: 185%;
-  margin-top: -13rem;
-  margin-left: -15rem;
+  width: 195%;
+  height: auto;
+  margin-top: -12rem;
+  margin-left: -16rem;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
