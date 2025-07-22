@@ -37,6 +37,10 @@
   src: url("./assets/fonts/Bustan-Bold.otf") format("opentype");
   font-weight: 300;
 }
+::selection {
+  background: #C29979 ; /* Coral color */
+  color: var(--color-background); /* Optional: changes the text color when selected */
+}
 
 html {
   scroll-behavior: smooth;
