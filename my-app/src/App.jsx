@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react'
+import { useState , useEffect, use} from 'react'
 import './App.css'
 import moroccandeco from './assets/images/moroccandeco.png'
 import moroccanlogo from './assets/images/Moroccanlogo.png'
@@ -31,9 +31,12 @@ import { FaArrowRight } from "react-icons/fa6";
 import vibrance from './assets/images/vibrancePortfolio.png'
 import xelopsimage from './assets/images/xelopsimage.jpg'
 import mzrwebsite from './assets/images/mzrwebsite.jpg'
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
+
+  const Navigate = useNavigate();
 
   const labels = {
           0: "Landing",
@@ -263,7 +266,17 @@ useEffect(() => {
           </div>
           </div>
           <div className='wrapper-crafts-small'>
-          <div className='craft four' data-cursor="Open">
+          <div className='craft four' data-cursor="Open" onClick={() => Navigate('/craftthree')}>
+            <div className='craft-image-container three'>
+              <div className='craft-image three'></div>
+            </div>
+            <div className='craft-description'>
+              <div>
+                <h3>Cart Tooltip</h3>
+                <h4>July 2025</h4>
+              </div>
+              <FaArrowRight className='icon-arrow' />
+            </div>
           </div>
           <div className='craft five' data-cursor="Open">
           </div>

@@ -1,0 +1,77 @@
+.craft-page-header {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+  width: 15vw;
+  left: 0;
+  top: 0;
+}
+
+.craft-page-header-back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  color: #81827f;
+  transition: all 0.3s ease;
+}
+
+.craft-page-header-back p {
+  margin-left: 8px;
+  font-family: var(--ff);
+  font-size: var(--fs-small);
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.craft-page-header-back:hover {
+  color: var(--color-primary);
+}
+
+.craft-page-content{
+    display: flex;
+    margin-top: 6rem;
+    width: 85vw;
+    flex-direction: column;
+    padding: 0;
+    margin-left: 15vw;
+    padding-left: 18vw;
+}
+.craft-page-content h1 {
+  font-family: var(--ff);
+  font-size: var(--fs-h6);
+  line-height: 0.5;
+  font-weight: 400;
+  color: var(--color-primary);
+}
+
+.craft-prototype {
+  width: 67vw;
+  height: 30rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-ultralight);
+  border-radius: 20px;
+}
+.craft-page-content-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 67vw;
+}
+.craft-page-content-header span {
+  font-family: var(--ff);
+  font-size: var(--fs-body);
+  cursor: pointer;
+  margin-right: 1rem;
+  font-weight: 400;
+  color: var(--color-primary-hover);
+}
+.craft-page-content-header span:hover {
+  color: var(--color-primary);
+}
