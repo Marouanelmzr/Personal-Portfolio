@@ -23,8 +23,8 @@
 }
 .cart-content-number {
     display: flex;
+    z-index: 9;
     position: absolute;
-    background-color: var(--color-background);
     color: var(--color-green);
     justify-content: center;
     align-items: center;
@@ -36,11 +36,104 @@
     width: 1rem;
     margin-top: -2rem;
     margin-right: -3rem;
-    border: solid 1px black;
     transition: all 0.3s cubic-bezier(0.25, 2, 0.5, 1);
     transform: scale(1);
+}
+.cart-content-number.bignumber {
+    font-size: .66rem;
+    padding-top: 0.1rem;
 }
 .cart-content-number.hidden {
     opacity: 0;
     transform: scale(0.2);
 }
+.cart-content {
+    display: flex;
+    z-index: 8;
+    position: absolute;
+    background-color: var(--color-background);
+    color: var(--color-green);
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-family: var(--ff);
+    font-size: var(--fs-xsmall);
+    border-radius: 50%;
+    height: 1.1rem;
+    width: 1.1rem;
+    margin-top: -2rem;
+    margin-right: -3rem;
+    border: solid 1px black;
+    transition: all 0.3s cubic-bezier(0.25, 2, 0.5, 1);
+    transform: scale(1);
+}
+.cart-content.hidden {
+    opacity: 0;
+    transform: scale(0.2);
+}
+.cart-content-prevnumber {
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    color: var(--color-green);
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-family: var(--ff);
+    font-size: var(--fs-xsmall);
+    height: 1rem;
+    width: 1rem;
+    margin-top: -2rem;
+    margin-right: -3rem;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Apply animation only when you add the class .animate */
+.cart-content-prevnumber.animate {
+    animation: slideOutToTop 0.4s ease forwards;
+}
+.cart-content-number.animate {
+    animation: slideinFromBottom 0.4s ease forwards;
+}
+.cart-tooltip.animate {
+    animation: zoomIn 0.4s ease forwards;
+}
+
+
+@keyframes slideOutToTop {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30%);
+    filter: blur(1px);
+  }
+}
+@keyframes slideinFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05);
+  }
+    100% {
+        transform: scale(1);
+    }
+}
+
