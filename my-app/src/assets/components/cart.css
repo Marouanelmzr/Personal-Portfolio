@@ -1,5 +1,6 @@
 .cart-tooltip{
     display: flex;
+    position: absolute;
     background-color: var(--color-primary);
     height: 3.5rem;
     width: 3.5rem;
@@ -8,7 +9,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 .cart-tooltip.active {
     background-color: var(--color-green);

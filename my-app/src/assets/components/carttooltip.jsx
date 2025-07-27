@@ -29,6 +29,53 @@ const CartTooltip = ({ cartcontent, cartState, prevCart }) => {
     }
   }, [cartcontent]); 
 
+  // Dragable functionality
+
+  useEffect(() => {
+    const tooltip = backroundRef.current;
+    if (!tooltip) return;
+
+    let isDragging = false;
+    let initialX, initialY, offsetX = 0, offsetY = 0;
+
+    const onMouseDown = (e) => {
+      e.preventDefault(); 
+      isDragging = true;
+      tooltip.style.transition = "none";
+      initialX = e.clientX;
+      initialY = e.clientY;
+      offsetX = tooltip.offsetLeft;
+      offsetY = tooltip.offsetTop;
+      tooltip.style.cursor = 'grabbing';
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - initialX;
+      const deltaY = e.clientY - initialY;
+      tooltip.style.left = offsetX + deltaX + 'px';
+      tooltip.style.top = offsetY + deltaY + 'px';
+    };
+
+    const onMouseUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      tooltip.style.cursor = 'grab';
+    };
+
+    // ✅ Attach only once
+    tooltip.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+
+    // ✅ Cleanup
+    return () => {
+      tooltip.removeEventListener('mousedown', onMouseDown);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+  }, []);
+
   return (
     <div className="cart">
       <div ref={backroundRef} className={`cart-tooltip ${cartState ? 'active' : ''}`}>
