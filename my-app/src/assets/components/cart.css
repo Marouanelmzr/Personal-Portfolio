@@ -22,6 +22,9 @@
 .cart-tooltip:hover {
     background-color: var(--color-primary-hover);
 }
+.cart-tooltip.active:hover {
+    background-color: var(--color-green-hover);
+}
 .cart-content-number {
     display: flex;
     z-index: 9;

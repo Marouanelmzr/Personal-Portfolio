@@ -112,7 +112,7 @@ const onMouseUp = () => {
   }
 
   // Smooth snap
-  tooltip.style.transition = "all 0.3s ease";
+  tooltip.style.transition = "all 0.3s cubic-bezier(0.25, 1.3, 0.25, 1)";
   tooltip.style.left = finalLeft + "px";
   tooltip.style.top = finalTop + "px";
 
