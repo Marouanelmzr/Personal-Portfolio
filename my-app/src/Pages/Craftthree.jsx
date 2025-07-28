@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react'
+import { useState , useEffect, useRef} from 'react'
 import CursorDot from '../assets/components/CursorDot.jsx';
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,8 @@ function App() {
     }
   };
 
+  const prototypeScreen = useRef(null);
+
   return (
     <>
     <div className='App'>
@@ -41,11 +43,12 @@ function App() {
         <h1>Cart Tooltip</h1>
         <span onClick={() =>  handleCartUpdate()}> Add to Cart</span>
         </div>
-        <div className='craft-prototype'>
+        <div className='craft-prototype' ref={prototypeScreen} >
           <CartTooltip 
           cartcontent={currentCart}
           cartState={cartState}
           prevCart={prevCart}
+          prototypeScreen={prototypeScreen}
           />
         </div>
      </section>

@@ -1,8 +1,20 @@
 import './cart.css';
 import { BsCart4 } from "react-icons/bs";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const CartTooltip = ({ cartcontent, cartState, prevCart }) => {
+const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
+
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+
+   useEffect(() => {
+     const leftprototype = prototypeScreen.current.offsetLeft;
+     const topprototype = prototypeScreen.current.offsetTop;
+     setPosition({
+       left: leftprototype + 20 + 'px',
+       top: topprototype + 20 + 'px'
+     });
+   }, [prototypeScreen]);
+
   const prevRef = useRef(null);
   const currentRef = useRef(null);
   const backroundRef = useRef(null);
@@ -57,11 +69,55 @@ const CartTooltip = ({ cartcontent, cartState, prevCart }) => {
       tooltip.style.top = offsetY + deltaY + 'px';
     };
 
-    const onMouseUp = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      tooltip.style.cursor = 'grab';
-    };
+const onMouseUp = () => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  tooltip.style.cursor = 'grab';
+
+  const tooltipWidth = tooltip.offsetWidth;
+  const tooltipHeight = tooltip.offsetHeight;
+
+  const rect = prototypeScreen.current.getBoundingClientRect();
+  const screenWidth = rect.width;
+  const screenHeight = rect.height;
+  const screenLeft = rect.left;
+  const screenTop = rect.top;
+
+  const currentX = tooltip.offsetLeft;
+  const currentY = tooltip.offsetTop;
+
+  // Distances to corners
+  const distTopLeft = Math.hypot(currentX - screenLeft, currentY - screenTop);
+  const distTopRight = Math.hypot((screenLeft + screenWidth) - (currentX + tooltipWidth), currentY - screenTop);
+  const distBottomLeft = Math.hypot(currentX - screenLeft, (screenTop + screenHeight) - (currentY + tooltipHeight));
+  const distBottomRight = Math.hypot((screenLeft + screenWidth) - (currentX + tooltipWidth), (screenTop + screenHeight) - (currentY + tooltipHeight));
+
+  // Find nearest corner
+  const minDist = Math.min(distTopLeft, distTopRight, distBottomLeft, distBottomRight);
+  let finalLeft, finalTop;
+
+  if (minDist === distTopLeft) {
+    finalLeft = screenLeft + 20 ; 
+    finalTop = screenTop + 20;
+  } else if (minDist === distTopRight) {
+    finalLeft = screenWidth + screenLeft- tooltipWidth - 20;
+    finalTop = screenTop + 20;
+  } else if (minDist === distBottomLeft) {
+    finalLeft = screenLeft + 20;
+    finalTop = screenHeight + screenTop - tooltipHeight - 20;
+  } else {
+    finalLeft = screenWidth + screenLeft - tooltipWidth - 20;
+    finalTop = screenHeight + screenTop - tooltipHeight - 20;
+  }
+
+  // Smooth snap
+  tooltip.style.transition = "all 0.3s ease";
+  tooltip.style.left = finalLeft + "px";
+  tooltip.style.top = finalTop + "px";
+
+};
+
 
     // ✅ Attach only once
     tooltip.addEventListener('mousedown', onMouseDown);
@@ -76,9 +132,11 @@ const CartTooltip = ({ cartcontent, cartState, prevCart }) => {
     };
   }, []);
 
+
+
   return (
     <div className="cart">
-      <div ref={backroundRef} className={`cart-tooltip ${cartState ? 'active' : ''}`}>
+      <div ref={backroundRef} className={`cart-tooltip ${cartState ? 'active' : ''}`} style={{ left: position.left, top: position.top }}>
         <BsCart4 className='cart-icon' />
         <span ref={prevRef} className="cart-content-prevnumber">{prevCart}</span>
         <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''}`}>{cartcontent}</span>
