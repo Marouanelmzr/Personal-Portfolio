@@ -50,6 +50,10 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
     let isDragging = false;
     let initialX, initialY, offsetX = 0, offsetY = 0;
 
+    // ✅ Velocity tracking
+    let lastX = 0, lastY = 0, lastTime = 0;
+    let velocityX = 0, velocityY = 0;
+
     const onMouseDown = (e) => {
       e.preventDefault(); 
       isDragging = true;
@@ -59,14 +63,31 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
       offsetX = tooltip.offsetLeft;
       offsetY = tooltip.offsetTop;
       tooltip.style.cursor = 'grabbing';
+
+      // Initialize velocity tracking
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lastTime = Date.now();
     };
 
     const onMouseMove = (e) => {
       if (!isDragging) return;
       const deltaX = e.clientX - initialX;
       const deltaY = e.clientY - initialY;
+
       tooltip.style.left = offsetX + deltaX + 'px';
       tooltip.style.top = offsetY + deltaY + 'px';
+
+    // ✅ Calculate velocity
+    const now = Date.now();
+    const dt = now - lastTime;
+    if (dt > 0) {
+      velocityX = (e.clientX - lastX) / dt;
+      velocityY = (e.clientY - lastY) / dt;
+    }
+    lastX = e.clientX;
+    lastY = e.clientY;
+    lastTime = now;
     };
 
 const onMouseUp = () => {
@@ -87,11 +108,16 @@ const onMouseUp = () => {
   const currentX = tooltip.offsetLeft;
   const currentY = tooltip.offsetTop;
 
-  // Distances to corners
-  const distTopLeft = Math.hypot(currentX - screenLeft, currentY - screenTop);
-  const distTopRight = Math.hypot((screenLeft + screenWidth) - (currentX + tooltipWidth), currentY - screenTop);
-  const distBottomLeft = Math.hypot(currentX - screenLeft, (screenTop + screenHeight) - (currentY + tooltipHeight));
-  const distBottomRight = Math.hypot((screenLeft + screenWidth) - (currentX + tooltipWidth), (screenTop + screenHeight) - (currentY + tooltipHeight));
+  // ✅ Use velocity to project final direction
+  const velocityBoost = 600; // tweak to make projection stronger or weaker
+  const projectedX = currentX + velocityX * velocityBoost;
+  const projectedY = currentY + velocityY * velocityBoost;
+
+  // Distances to corners depending on projected position
+  const distTopLeft = Math.hypot(projectedX - screenLeft, projectedY - screenTop);
+  const distTopRight = Math.hypot((screenLeft + screenWidth) - (projectedX + tooltipWidth), projectedY - screenTop);
+  const distBottomLeft = Math.hypot(projectedX - screenLeft, (screenTop + screenHeight) - (projectedY + tooltipHeight));
+  const distBottomRight = Math.hypot((screenLeft + screenWidth) - (projectedX + tooltipWidth), (screenTop + screenHeight) - (projectedY + tooltipHeight));
 
   // Find nearest corner
   const minDist = Math.min(distTopLeft, distTopRight, distBottomLeft, distBottomRight);
