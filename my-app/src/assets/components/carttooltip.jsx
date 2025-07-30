@@ -161,12 +161,15 @@ const onMouseUp = () => {
 
 
   return (
-    <div className="cart">
-      <div ref={backroundRef} className={`cart-tooltip ${cartState ? 'active' : ''}`} style={{ left: position.left, top: position.top }}>
+    <div className="cart" ref={backroundRef} style={{ left: position.left, top: position.top }}>
+      <div  className={`cart-tooltip ${cartState ? 'active' : ''}`}>
         <BsCart4 className='cart-icon' />
         <span ref={prevRef} className="cart-content-prevnumber">{prevCart}</span>
         <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''}`}>{cartcontent}</span>
         <span className={`cart-content ${cartState ? 'visible' : 'hidden'}`}></span>
+      </div>
+      <div className='shopping-cart'>
+
       </div>
     </div>
   );

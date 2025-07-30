@@ -1,6 +1,5 @@
 .cart-tooltip{
     display: flex;
-    position: absolute;
     background-color: var(--color-primary);
     height: 3rem;
     width: 3rem;
@@ -142,3 +141,24 @@
     }
 }
 
+.cart{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+}
+
+.shopping-cart{
+    display: flex;
+    position: absolute;
+    background-color: var(--color-green);
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 18rem;
+    top: 3rem;
+    left: 0;
+    border-radius: 20px;
+}
