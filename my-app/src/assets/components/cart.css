@@ -1,9 +1,59 @@
+.cart-tooltip-container.active{
+    display: flex;
+    background-color: var(--color-green);
+    height: 7rem;
+    width: 15rem;
+    border-radius: 30px;
+    justify-content: start;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.cart-tooltip-container.active h1 {
+  position: absolute;
+  opacity: 1;
+    color: var(--color-background);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 5.2rem;
+    margin-top: 1.7rem;
+    font-family: var(--ff);
+    z-index: 10;
+}
+.cart-tooltip-container h1 {
+    opacity: 0;
+}
+.cart-curved.active{
+  opacity: 1;
+    display: flex;
+    position: absolute;
+    top: -1.2rem;
+    left: 12.3rem;
+    width: auto;
+    height: 6.7rem;
+    z-index: 8;
+    
+}
+.cart-curved{
+  opacity: 0;
+    display: flex;
+    position: absolute;
+    top: -1.2rem;
+    left: 12.3rem;
+    width: auto;
+    height: 6.7rem;
+    z-index: 8;
+    
+}
 .cart-tooltip{
     display: flex;
+    z-index: 9;
     background-color: var(--color-primary);
-    height: 3rem;
-    width: 3rem;
+    height: 2.7rem;
+    width: 2.7rem;
     border-radius: 50%;
+    margin-left: 1rem;
+    margin-top: .5rem;
     border: solid 1px black;
     justify-content: center;
     align-items: center;
@@ -13,10 +63,19 @@
 .cart-tooltip.active {
     background-color: var(--color-green);
 }
+.cart-tooltip.active.larger {
+  justify-content: flex-start;
+  background-color: var(--color-green-hover);
+  width: 13.8rem;
+  border-radius: 20px;
+}
 .cart-icon {
     color: var(--color-background);
-    font-size: 1.4rem;
-    margin: auto;
+    font-size: 1.3rem;
+    margin: 0;
+}
+.cart-icon.active {
+    margin: 1.3rem;
 }
 .cart-tooltip:hover {
     background-color: var(--color-primary-hover);
@@ -25,6 +84,7 @@
     background-color: var(--color-green-hover);
 }
 .cart-content-number {
+  opacity: 1;
     display: flex;
     z-index: 9;
     position: absolute;
@@ -33,25 +93,29 @@
     align-items: center;
     font-weight: 400;
     font-family: var(--ff);
-    padding-top: 0.2rem;
-    font-size: .7rem;
+    padding-top: 0.1rem;
+    font-size: .6rem;
     border-radius: 50%;
     height: 1rem;
     width: 1rem;
-    margin-top: -1.8rem;
-    margin-right: -2.6rem;
+    margin-top: -1.6rem;
+    margin-right: -2.35rem;
     transition: all 0.3s cubic-bezier(0.25, 2, 0.5, 1);
     transform: scale(1);
 }
+.cart-content-number.active {
+  opacity: 0;
+}
 .cart-content-number.bignumber {
-    font-size: .58rem;
-    padding-top: 0.22rem;
+    font-size: .56rem;
+    padding-top: 0.05rem;
 }
 .cart-content-number.hidden {
     opacity: 0;
     transform: scale(0.2);
 }
 .cart-content {
+  opacity: 1;
     display: flex;
     z-index: 8;
     position: absolute;
@@ -61,21 +125,25 @@
     align-items: center;
     font-weight: 400;
     font-family: var(--ff);
-    font-size: var(--fs-xsmall);
+    font-size: .6rem;
     border-radius: 50%;
-    height: 1rem;
-    width: 1rem;
-    margin-top: -1.8rem;
-    margin-right: -2.6rem;
+    height: 0.8rem;
+    width: 0.8rem;
+    margin-top: -1.6rem;
+    margin-right: -2.35rem;
     border: solid 1px black;
     transition: all 0.3s cubic-bezier(0.25, 2, 0.5, 1);
     transform: scale(1);
+}
+.cart-tooltip.active.larger .cart-content {
+    opacity: 0;
 }
 .cart-content.hidden {
     opacity: 0;
     transform: scale(0.2);
 }
 .cart-content-prevnumber {
+    opacity: 1;
     display: flex;
     z-index: 10;
     position: absolute;
@@ -87,10 +155,13 @@
     font-size: var(--fs-xsmall);
     height: 1rem;
     width: 1rem;
-    margin-top: -1.8rem;
-    margin-right: -2.6rem;
+   margin-top: -1.6rem;
+    margin-right: -2.4rem;
     opacity: 1;
     pointer-events: none;
+}
+.cart-content-prevnumber.active {
+    opacity: 0;
 }
 
 /* Apply animation only when you add the class .animate */
@@ -150,15 +221,19 @@
     width: fit-content;
 }
 
-.shopping-cart{
+.shopping-cart.active{
+    opacity: 1;
     display: flex;
     position: absolute;
     background-color: var(--color-green);
     justify-content: center;
     align-items: center;
-    width: 30rem;
+    width: 37rem;
     height: 18rem;
     top: 3rem;
     left: 0;
-    border-radius: 20px;
+    border-radius: 30px;
+}
+.shopping-cart{
+    opacity: 0;
 }

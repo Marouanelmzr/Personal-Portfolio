@@ -1,9 +1,11 @@
 import './cart.css';
 import { BsCart4 } from "react-icons/bs";
 import { useEffect, useRef, useState } from 'react';
+import curvedsvg from '../images/curvedsvg.png';
 
 const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
 
+  const [shopActive, setshopActive] = useState(false);
   const [position, setPosition] = useState({ left: 0, top: 0 });
 
    useEffect(() => {
@@ -162,13 +164,17 @@ const onMouseUp = () => {
 
   return (
     <div className="cart" ref={backroundRef} style={{ left: position.left, top: position.top }}>
-      <div  className={`cart-tooltip ${cartState ? 'active' : ''}`}>
-        <BsCart4 className='cart-icon' />
-        <span ref={prevRef} className="cart-content-prevnumber">{prevCart}</span>
-        <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''}`}>{cartcontent}</span>
-        <span className={`cart-content ${cartState ? 'visible' : 'hidden'}`}></span>
+      <div className={`cart-tooltip-container ${shopActive ? 'active' : ''}`}>
+      <div  className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} onClick={() => setshopActive(!shopActive)}>
+        <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
+        <span ref={prevRef} className={`cart-content-prevnumber ${shopActive ? 'active' : ''}`}>{prevCart}</span>
+        <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''} ${shopActive ? 'active' : ''}`}>{cartcontent}</span>
+        <span className={`cart-content ${cartState ? 'visible' : 'hidden'} `}></span>
       </div>
-      <div className='shopping-cart'>
+      <h1>Shopping cart</h1>
+      <img src={curvedsvg} alt="Curved Background" className={`cart-curved ${shopActive ? 'active' : ''}`} />
+      </div>
+      <div className={`shopping-cart ${shopActive ? 'active' : ''}`}>
 
       </div>
     </div>
