@@ -11,49 +11,41 @@
 }
 .cart-tooltip-container.active h1 {
   position: absolute;
-  opacity: 1;
+   display: flex;
     color: var(--color-background);
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 400;
-    margin-left: 5.2rem;
+    margin-left: 4.5rem;
     margin-top: 1.7rem;
     font-family: var(--ff);
+    letter-spacing: 1px;
     z-index: 10;
 }
 .cart-tooltip-container h1 {
-    opacity: 0;
+    display: none;
 }
 .cart-curved.active{
-  opacity: 1;
     display: flex;
     position: absolute;
-    top: -1.2rem;
-    left: 12.3rem;
+    top: -1.39rem;
+    left: 11rem;
     width: auto;
-    height: 6.7rem;
+    height: 7.79rem;
     z-index: 8;
     
 }
 .cart-curved{
-  opacity: 0;
-    display: flex;
-    position: absolute;
-    top: -1.2rem;
-    left: 12.3rem;
-    width: auto;
-    height: 6.7rem;
-    z-index: 8;
-    
+  display: none;
 }
 .cart-tooltip{
     display: flex;
     z-index: 9;
     background-color: var(--color-primary);
-    height: 2.7rem;
-    width: 2.7rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
     margin-left: 1rem;
-    margin-top: .5rem;
+    margin-top: .7rem;
     border: solid 1px black;
     justify-content: center;
     align-items: center;
@@ -66,12 +58,13 @@
 .cart-tooltip.active.larger {
   justify-content: flex-start;
   background-color: var(--color-green-hover);
-  width: 13.8rem;
+  width: 12.8rem;
   border-radius: 20px;
+  border: none;
 }
 .cart-icon {
     color: var(--color-background);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin: 0;
 }
 .cart-icon.active {
@@ -84,7 +77,6 @@
     background-color: var(--color-green-hover);
 }
 .cart-content-number {
-  opacity: 1;
     display: flex;
     z-index: 9;
     position: absolute;
@@ -104,18 +96,17 @@
     transform: scale(1);
 }
 .cart-content-number.active {
-  opacity: 0;
+  display: none;
 }
 .cart-content-number.bignumber {
     font-size: .56rem;
     padding-top: 0.05rem;
 }
 .cart-content-number.hidden {
-    opacity: 0;
+    display: none;
     transform: scale(0.2);
 }
 .cart-content {
-  opacity: 1;
     display: flex;
     z-index: 8;
     position: absolute;
@@ -136,10 +127,10 @@
     transform: scale(1);
 }
 .cart-tooltip.active.larger .cart-content {
-    opacity: 0;
+    display: none;
 }
 .cart-content.hidden {
-    opacity: 0;
+    display: none;
     transform: scale(0.2);
 }
 .cart-content-prevnumber {
@@ -161,7 +152,7 @@
     pointer-events: none;
 }
 .cart-content-prevnumber.active {
-    opacity: 0;
+    display: none;
 }
 
 /* Apply animation only when you add the class .animate */
@@ -230,7 +221,7 @@
     align-items: center;
     width: 37rem;
     height: 18rem;
-    top: 3rem;
+    top: 3.5rem;
     left: 0;
     border-radius: 30px;
 }

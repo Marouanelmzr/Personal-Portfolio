@@ -7,6 +7,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
 
   const [shopActive, setshopActive] = useState(false);
   const [position, setPosition] = useState({ left: 0, top: 0 });
+  const dragThreshold = 5; // Minimum drag distance to open shop
 
    useEffect(() => {
      const leftprototype = prototypeScreen.current.offsetLeft;
@@ -50,6 +51,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
     if (!tooltip) return;
 
     let isDragging = false;
+    let moved = false;
     let initialX, initialY, offsetX = 0, offsetY = 0;
 
     // ✅ Velocity tracking
@@ -59,6 +61,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
     const onMouseDown = (e) => {
       e.preventDefault(); 
       isDragging = true;
+      moved = false;
       tooltip.style.transition = "none";
       initialX = e.clientX;
       initialY = e.clientY;
@@ -76,6 +79,10 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
       if (!isDragging) return;
       const deltaX = e.clientX - initialX;
       const deltaY = e.clientY - initialY;
+
+      if (Math.abs(deltaX) > dragThreshold || Math.abs(deltaY) > dragThreshold) {
+    moved = true;
+  }
 
       tooltip.style.left = offsetX + deltaX + 'px';
       tooltip.style.top = offsetY + deltaY + 'px';
@@ -95,6 +102,9 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
 const onMouseUp = () => {
   if (!isDragging) return;
   isDragging = false;
+  if (!moved) {
+    setshopActive(prev => !prev);
+  }
 
   tooltip.style.cursor = 'grab';
 
@@ -165,7 +175,7 @@ const onMouseUp = () => {
   return (
     <div className="cart" ref={backroundRef} style={{ left: position.left, top: position.top }}>
       <div className={`cart-tooltip-container ${shopActive ? 'active' : ''}`}>
-      <div  className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} onClick={() => setshopActive(!shopActive)}>
+      <div  className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} >
         <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
         <span ref={prevRef} className={`cart-content-prevnumber ${shopActive ? 'active' : ''}`}>{prevCart}</span>
         <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''} ${shopActive ? 'active' : ''}`}>{cartcontent}</span>
