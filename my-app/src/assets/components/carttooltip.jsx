@@ -8,6 +8,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
   const [shopActive, setshopActive] = useState(false);
   const [position, setPosition] = useState({ left: 0, top: 0 });
   const dragThreshold = 5; // Minimum drag distance to open shop
+  const [corner, setCorner] = useState("top-left");
 
    useEffect(() => {
      const leftprototype = prototypeScreen.current.offsetLeft;
@@ -138,15 +139,19 @@ const onMouseUp = () => {
   if (minDist === distTopLeft) {
     finalLeft = screenLeft + 20 ; 
     finalTop = screenTop + 20;
+    setCorner("top-left");
   } else if (minDist === distTopRight) {
     finalLeft = screenWidth + screenLeft- tooltipWidth - 20;
     finalTop = screenTop + 20;
+    setCorner("top-right");
   } else if (minDist === distBottomLeft) {
     finalLeft = screenLeft + 20;
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
+    setCorner("bottom-leftt");
   } else {
     finalLeft = screenWidth + screenLeft - tooltipWidth - 20;
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
+    setCorner("bottom-right");
   }
 
   // Smooth snap
@@ -168,13 +173,13 @@ const onMouseUp = () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     };
-  }, []);
+  }, [prototypeScreen]);
 
 
 
   return (
-    <div className="cart" ref={backroundRef} style={{ left: position.left, top: position.top }}>
-      <div className={`cart-tooltip-container ${shopActive ? 'active' : ''}`}>
+    <div className={`cart ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
+      <div className={`cart-tooltip-container ${shopActive ? 'active' : ''} ${corner}`}>
       <div  className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} >
         <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
         <span ref={prevRef} className={`cart-content-prevnumber ${shopActive ? 'active' : ''}`}>{prevCart}</span>
@@ -182,9 +187,9 @@ const onMouseUp = () => {
         <span className={`cart-content ${cartState ? 'visible' : 'hidden'} `}></span>
       </div>
       <h1>Shopping cart</h1>
-      <img src={curvedsvg} alt="Curved Background" className={`cart-curved ${shopActive ? 'active' : ''}`} />
+      <img src={curvedsvg} alt="Curved Background" className={`cart-curved ${shopActive ? 'active' : ''} ${corner}`} />
       </div>
-      <div className={`shopping-cart ${shopActive ? 'active' : ''}`}>
+      <div className={`shopping-cart ${shopActive ? 'active' : ''} ${corner}`}>
 
       </div>
     </div>

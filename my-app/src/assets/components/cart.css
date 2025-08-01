@@ -1,3 +1,17 @@
+.cart{
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: fit-content;
+    width: 37rem;
+}
+.cart.top-right{
+    justify-content: flex-end;
+}
+.cart.bottom-right{
+    justify-content: flex-end;
+}
 .cart-tooltip-container.active{
     display: flex;
     background-color: var(--color-green);
@@ -9,6 +23,12 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+.cart-tooltip-container.active.bottom-leftt{
+    align-items: flex-end;
+}
+.cart-tooltip-container.active.bottom-right{
+    align-items: flex-end;
+}
 .cart-tooltip-container.active h1 {
   position: absolute;
    display: flex;
@@ -17,6 +37,7 @@
     font-weight: 400;
     margin-left: 4.5rem;
     margin-top: 1.7rem;
+    margin-bottom: 1.7rem;
     font-family: var(--ff);
     letter-spacing: 1px;
     z-index: 10;
@@ -32,11 +53,28 @@
     width: auto;
     height: 7.79rem;
     z-index: 8;
-    
-}
+    }
 .cart-curved{
   display: none;
 }
+.cart-curved.top-right {
+  transform: scale(-1, 1);
+  right: 11rem;
+  left: auto;
+}
+.cart-curved.bottom-right {
+  bottom: -1.39rem;
+  left: auto;
+  right: 11rem;
+  top: auto;
+  transform: scale(-1, -1);
+}
+.cart-curved.bottom-leftt {
+  bottom: -1.39rem;
+  top: auto;
+  transform: scale(1, -1);
+}
+
 .cart-tooltip{
     display: flex;
     z-index: 9;
@@ -46,6 +84,7 @@
     border-radius: 50%;
     margin-left: 1rem;
     margin-top: .7rem;
+    margin-bottom: .7rem;
     border: solid 1px black;
     justify-content: center;
     align-items: center;
@@ -134,7 +173,6 @@
     transform: scale(0.2);
 }
 .cart-content-prevnumber {
-    opacity: 1;
     display: flex;
     z-index: 10;
     position: absolute;
@@ -153,6 +191,9 @@
 }
 .cart-content-prevnumber.active {
     display: none;
+}
+.cart-content-prevnumber:not(.animate) {
+  opacity: 0;
 }
 
 /* Apply animation only when you add the class .animate */
@@ -203,15 +244,6 @@
     }
 }
 
-.cart{
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    width: fit-content;
-}
-
 .shopping-cart.active{
     opacity: 1;
     display: flex;
@@ -227,4 +259,12 @@
 }
 .shopping-cart{
     opacity: 0;
+}
+.shopping-cart.active.bottom-leftt {
+    top: auto;
+    bottom: 3.5rem;
+}
+.shopping-cart.active.bottom-right {
+    top: auto;
+    bottom: 3.5rem;
 }
