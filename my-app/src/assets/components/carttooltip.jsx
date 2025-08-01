@@ -22,6 +22,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
   const prevRef = useRef(null);
   const currentRef = useRef(null);
   const backroundRef = useRef(null);
+  const tooltipcloserRef = useRef(null);
 
   useEffect(() => {
     if (prevRef.current && prevCart !== 0) {
@@ -60,7 +61,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
     let velocityX = 0, velocityY = 0;
 
     const onMouseDown = (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
       isDragging = true;
       moved = false;
       tooltip.style.transition = "none";
@@ -68,7 +69,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
       initialY = e.clientY;
       offsetX = tooltip.offsetLeft;
       offsetY = tooltip.offsetTop;
-      tooltip.style.cursor = 'grabbing';
+      tooltipcloserRef.style.cursor = 'grabbing';
 
       // Initialize velocity tracking
       lastX = e.clientX;
@@ -77,7 +78,8 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
     };
 
     const onMouseMove = (e) => {
-      if (!isDragging) return;
+      if (!isDragging || shopActive) return;
+      e.preventDefault();
       const deltaX = e.clientX - initialX;
       const deltaY = e.clientY - initialY;
 
@@ -107,7 +109,7 @@ const onMouseUp = () => {
     setshopActive(prev => !prev);
   }
 
-  tooltip.style.cursor = 'grab';
+  tooltipcloserRef.current.style.cursor = 'grab';
 
   const tooltipWidth = tooltip.offsetWidth;
   const tooltipHeight = tooltip.offsetHeight;
@@ -163,7 +165,7 @@ const onMouseUp = () => {
 
 
     // ✅ Attach only once
-    tooltip.addEventListener('mousedown', onMouseDown);
+    tooltipcloserRef.current.addEventListener('mousedown', onMouseDown);
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
@@ -173,14 +175,14 @@ const onMouseUp = () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     };
-  }, [prototypeScreen]);
+  }, [prototypeScreen, shopActive]);
 
 
 
   return (
     <div className={`cart ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
-      <div className={`cart-tooltip-container ${shopActive ? 'active' : ''} ${corner}`}>
-      <div  className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} >
+      <div ref={tooltipcloserRef} className={`cart-tooltip-container ${shopActive ? 'active' : ''} ${corner}`}>
+      <div className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} >
         <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
         <span ref={prevRef} className={`cart-content-prevnumber ${shopActive ? 'active' : ''}`}>{prevCart}</span>
         <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''} ${shopActive ? 'active' : ''}`}>{cartcontent}</span>
