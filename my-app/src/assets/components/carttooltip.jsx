@@ -23,6 +23,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
   const currentRef = useRef(null);
   const backroundRef = useRef(null);
   const tooltipcloserRef = useRef(null);
+  const tooltipiconRef = useRef(null);
 
   useEffect(() => {
     if (prevRef.current && prevCart !== 0) {
@@ -50,6 +51,8 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
 
   useEffect(() => {
     const tooltip = backroundRef.current;
+    const tooltipcloser = tooltipcloserRef.current;
+    const tooltipicon = tooltipiconRef.current;
     if (!tooltip) return;
 
     let isDragging = false;
@@ -69,7 +72,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
       initialY = e.clientY;
       offsetX = tooltip.offsetLeft;
       offsetY = tooltip.offsetTop;
-      tooltipcloserRef.style.cursor = 'grabbing';
+      tooltipcloser.style.cursor = 'grabbing';
 
       // Initialize velocity tracking
       lastX = e.clientX;
@@ -105,7 +108,7 @@ const CartTooltip = ({ cartcontent, cartState, prevCart, prototypeScreen }) => {
 const onMouseUp = () => {
   if (!isDragging) return;
   isDragging = false;
-  if (!moved) {
+  if (!moved && cartcontent !== 0) {
     setshopActive(prev => !prev);
   }
 
@@ -137,23 +140,24 @@ const onMouseUp = () => {
   // Find nearest corner
   const minDist = Math.min(distTopLeft, distTopRight, distBottomLeft, distBottomRight);
   let finalLeft, finalTop;
+  let newCorner;
 
   if (minDist === distTopLeft) {
     finalLeft = screenLeft + 20 ; 
     finalTop = screenTop + 20;
-    setCorner("top-left");
+    newCorner = "top-left";
   } else if (minDist === distTopRight) {
     finalLeft = screenWidth + screenLeft- tooltipWidth - 20;
     finalTop = screenTop + 20;
-    setCorner("top-right");
+    newCorner = "top-right";
   } else if (minDist === distBottomLeft) {
     finalLeft = screenLeft + 20;
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
-    setCorner("bottom-leftt");
+    newCorner = "bottom-leftt";
   } else {
     finalLeft = screenWidth + screenLeft - tooltipWidth - 20;
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
-    setCorner("bottom-right");
+    newCorner = "bottom-right";
   }
 
   // Smooth snap
@@ -161,6 +165,9 @@ const onMouseUp = () => {
   tooltip.style.left = finalLeft + "px";
   tooltip.style.top = finalTop + "px";
 
+  setTimeout(() => {
+  setCorner(newCorner);
+  }, 420);
 };
 
 
@@ -175,14 +182,14 @@ const onMouseUp = () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     };
-  }, [prototypeScreen, shopActive]);
+  }, [prototypeScreen, shopActive, cartcontent]);
 
 
 
   return (
-    <div className={`cart ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
+    <div className={`cart ${shopActive ? 'active' : ''} ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
       <div ref={tooltipcloserRef} className={`cart-tooltip-container ${shopActive ? 'active' : ''} ${corner}`}>
-      <div className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} >
+      <div className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} ref={tooltipiconRef}>
         <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
         <span ref={prevRef} className={`cart-content-prevnumber ${shopActive ? 'active' : ''}`}>{prevCart}</span>
         <span ref={currentRef} className={`cart-content-number ${cartState ? 'visible' : 'hidden'} ${cartcontent > 9 ? 'bignumber' : ''} ${shopActive ? 'active' : ''}`}>{cartcontent}</span>
