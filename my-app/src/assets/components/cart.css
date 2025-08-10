@@ -12,7 +12,7 @@
 .cart.active.top-right{
     justify-content: flex-end;
 }
-.cart.bottom-right{
+.cart.active.bottom-right{
     justify-content: flex-end;
 }
 .cart-tooltip-container.active{

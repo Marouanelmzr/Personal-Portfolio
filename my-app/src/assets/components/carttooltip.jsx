@@ -165,9 +165,7 @@ const onMouseUp = () => {
   tooltip.style.left = finalLeft + "px";
   tooltip.style.top = finalTop + "px";
 
-  setTimeout(() => {
   setCorner(newCorner);
-  }, 420);
 };
 
 
@@ -184,10 +182,52 @@ const onMouseUp = () => {
     };
   }, [prototypeScreen, shopActive, cartcontent]);
 
+const prevShopActive = useRef(shopActive);
+
+useEffect(() => {
+  const tooltip = backroundRef.current;
+  if (!tooltip) return;
+
+  // Détection du changement d'état
+  const isOpening = !prevShopActive.current && shopActive;
+  const isClosing = prevShopActive.current && !shopActive;
+
+  prevShopActive.current = shopActive; // mettre à jour pour la prochaine fois
+
+  const oldTransition = tooltip.style.transition;
+  const rect = prototypeScreen.current.getBoundingClientRect();
+  const containerRight = rect.left + rect.width;
+  const tooltipWidth = tooltip.offsetWidth;
+
+  // Fonction qui repositionne instantanément
+  const setPositionInstant = (leftValue) => {
+    tooltip.style.transition = "none";
+    tooltip.style.left = leftValue + "px";
+    void tooltip.offsetWidth; // reflow
+  };
+
+  if (isOpening) {
+    // OUVERTURE → annule transition juste ici
+    if (corner.includes("right")) {
+      setPositionInstant(containerRight - tooltipWidth - 20);
+    }
+    tooltip.style.transition = oldTransition || "";
+  } else if (isClosing) {
+    // FERMETURE → annule transition juste ici
+    if (corner.includes("right")) {
+      setPositionInstant(containerRight - tooltipWidth - 20);
+    }
+    setTimeout(() => {
+      tooltip.style.transition = oldTransition || "";
+    }, 50);
+  }
+}, [shopActive, corner, prototypeScreen]);
+
+
 
 
   return (
-    <div className={`cart ${shopActive ? 'active' : ''} ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
+    <div className={`cart ${shopActive ? 'active' : 'inactive'} ${corner}`} ref={backroundRef} style={{ left: position.left, top: position.top }}>
       <div ref={tooltipcloserRef} className={`cart-tooltip-container ${shopActive ? 'active' : ''} ${corner}`}>
       <div className={`cart-tooltip ${cartState ? 'active' : ''} ${shopActive ? 'larger' : ''}`} ref={tooltipiconRef}>
         <BsCart4 className={`cart-icon ${shopActive ? 'active' : ''}`} />
