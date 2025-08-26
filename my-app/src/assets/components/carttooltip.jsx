@@ -147,7 +147,7 @@ const onMouseUp = () => {
     finalTop = screenTop + 20;
     newCorner = "top-left";
   } else if (minDist === distTopRight) {
-    finalLeft = screenWidth + screenLeft- tooltipWidth - 20;
+    finalLeft = screenWidth + screenLeft- tooltipWidth - 30;
     finalTop = screenTop + 20;
     newCorner = "top-right";
   } else if (minDist === distBottomLeft) {
@@ -155,7 +155,7 @@ const onMouseUp = () => {
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
     newCorner = "bottom-leftt";
   } else {
-    finalLeft = screenWidth + screenLeft - tooltipWidth - 20;
+    finalLeft = screenWidth + screenLeft - tooltipWidth - 30;
     finalTop = screenHeight + screenTop - tooltipHeight - 20;
     newCorner = "bottom-right";
   }
@@ -197,6 +197,7 @@ useEffect(() => {
   const oldTransition = tooltip.style.transition;
   const rect = prototypeScreen.current.getBoundingClientRect();
   const containerRight = rect.left + rect.width;
+  const containerBottom = rect.top + rect.height;
   const tooltipWidth = tooltip.offsetWidth;
 
   // Fonction qui repositionne instantanément
@@ -205,17 +206,28 @@ useEffect(() => {
     tooltip.style.left = leftValue + "px";
     void tooltip.offsetWidth; // reflow
   };
+  const setPositionInstantTop = (topValue) => {
+    tooltip.style.transition = "none";
+    tooltip.style.top = topValue + "px";
+    void tooltip.offsetHeight; // reflow
+  };
 
   if (isOpening) {
     // OUVERTURE → annule transition juste ici
     if (corner.includes("right")) {
       setPositionInstant(containerRight - tooltipWidth - 20);
     }
+    if (corner.includes("bottom")) {
+      setPositionInstantTop(containerBottom - tooltip.offsetHeight - 20);
+    }
     tooltip.style.transition = oldTransition || "";
   } else if (isClosing) {
     // FERMETURE → annule transition juste ici
     if (corner.includes("right")) {
-      setPositionInstant(containerRight - tooltipWidth - 20);
+      setPositionInstant(containerRight - tooltipWidth - 30);
+    }
+    if (corner.includes("bottom")) {
+      setPositionInstantTop(containerBottom - tooltip.offsetHeight - 20);
     }
     setTimeout(() => {
       tooltip.style.transition = oldTransition || "";

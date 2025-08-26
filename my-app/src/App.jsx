@@ -240,7 +240,7 @@ useEffect(() => {
         <h2> <img src={tstreched} alt="T-Stretched" className='t-stretched-title'/> CRAF<span className='hide-letter'>T</span>S</h2>
         <div className='crafts-wrapper'>
           <div className='wrapper-crafts-first'>
-          <div className='craft one' data-cursor="Open">
+          <div className='craft one' data-cursor="Open" onClick={() => Navigate('/xelops')}>
             <div className='craft-image-container'>
               <img src={xelopsimage} alt="Xelops Project" className='craft-image' />
             </div>
