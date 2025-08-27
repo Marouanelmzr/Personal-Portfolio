@@ -105,3 +105,26 @@
   color: var(--color-primary-hover);
   letter-spacing: 1px;
 }
+.xelops-project-details{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.xelops-project-details h3{
+  font-family: var(--ff);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+  color: var(--color-primary);
+  letter-spacing: 1px;
+}
+.xelops-project-details p{
+  font-family: var(--ff);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  font-weight: var(--fw-light);
+  color: var(--color-primary-hover);
+  letter-spacing: 1px;
+} 
