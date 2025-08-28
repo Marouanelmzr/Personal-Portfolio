@@ -174,3 +174,211 @@
   font-size: 1.9rem;
   padding-right: 1.5rem;
 }
+.Design-system{
+  display: flex;
+  padding-bottom: 10rem;
+  flex-direction: column;
+}
+.design-system-content{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.content-left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+.top-part{
+  height: 19vw;
+}
+.main-colors{
+  display: grid;
+  width: 100%;
+  height: 70%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.main-color{
+  display: flex;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+  text-align: center;
+  font-family: var(--ff);
+  font-size: var(--fs-xxsmall);
+  line-height: 1.8;
+  font-weight: var(--fw-regular);
+  letter-spacing: 1px;
+}
+.color-type{
+  font-family: var(--ff);
+  font-size: var(--fs-xsmall);
+  line-height: 1.8;
+  font-weight: var(--fw-regular);
+  letter-spacing: 1px;
+  padding: 0.2rem .5rem;
+  border-radius: 10px;
+}
+.color-type.light{
+  background-color: #80809e;
+}
+.color-type.background{
+  background-color: #1A1A40;
+
+}
+.color-type.white{
+  background-color: #dddddd;
+}
+.color-type.purple{
+  background-color: #3d2bc7;
+}
+.color-type.Light-Lavender{
+  background-color: #817ac8;
+  color: var(--color-background);
+}
+.color-type.Blue-Grey{
+  background-color: #6e6f92;
+  color: var(--color-background);
+}
+.main-color.light{
+  background-color: #C9C9DC;
+  color: var(--color-primary);
+}
+.main-color.background{
+  background-color: #0F0F28;
+  color: var(--color-background);
+}
+.main-color.white{
+  background-color: #FFFFFF;
+  color: var(--color-primary);
+}
+.main-color.purple{
+  background-color: #5B45FF;
+  color: var(--color-background);
+}
+.main-color.Light-Lavender{
+  background-color: #aba3ff;
+  color: var(--color-background);
+}
+.main-color.Blue-Grey{
+  background-color: #8C8DB3;
+  color: var(--color-background);
+}
+
+.state-colors{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.state-color{
+  display: flex;
+  width: 100%;
+  aspect-ratio: 6 / 4;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+  text-align: center;
+  font-family: var(--ff);
+  font-size: var(--fs-xxsmall);
+  line-height: 1.8;
+  font-weight: var(--fw-regular);
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+.state-color.draft{
+  background-color: #5786c3;
+  color: var(--color-background);
+}
+.state-color.progress{
+  background-color: #ffad60;
+  color: var(--color-primary);
+}
+.state-color.accepted{
+  background-color: #93c357;
+  color: var(--color-background);
+}
+.state-color.rejected{
+  background-color: #cc5759;
+  color: var(--color-background);
+}
+.typography{
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  border-radius: 20px;
+  background-color: #e8e8e3;
+  margin-top: -0.5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.typography h1{
+  font-family: 'Inter', sans-serif;
+  font-size: 3.2rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.typography h2{
+  font-family: 'Inter', sans-serif;
+  font-size: 3.2rem;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.typography h3{
+  font-family: 'Inter', sans-serif;
+  font-size: 3.2rem;
+  line-height: 1;
+  font-weight: 200;
+  color: var(--color-primary);
+}
+.typography span{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--color-primary);
+}
+.font-title{
+  font-family: var(--ff);
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: var(--fw-regular);
+}
+
+.figma-image{
+  width: auto;
+  height: 17.2vw;
+  border-radius: 20px;
+}
+.content-right{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.content-right h6{
+  font-family: var(--ff);
+  font-size: var(--fs-xsmall);
+  line-height: 2;
+  font-weight: var(--fw-light);
+  color: var(--color-primary-hover);
+  letter-spacing: 1px;
+}

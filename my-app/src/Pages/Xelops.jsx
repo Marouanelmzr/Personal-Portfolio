@@ -8,6 +8,7 @@ import { IoPerson } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import { IoPencil } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
+import figma from '../assets/images/figma-xelops.png';
 
 
 function App() {
@@ -75,6 +76,39 @@ function App() {
               <div className='grids'>
                 <span ><IoCodeSlash className='span-icon'/></span>
                 <span className='span-text'>Another challenge was implementing the entire interface, covering login, employee, and manager pages, while ensuring full responsiveness across devices and maintaining a consistent user experience.</span>
+              </div>
+            </div>
+            </div>
+            <div className='Design-system'>
+            <h3>Design System</h3>
+            <div className='design-system-content'>
+              <div className='content-left'>
+                <div className='top-part'>
+                <div className='main-colors'>
+                  <span className='main-color light'> <span className='color-type light'>Primary</span> Light Purple <br/> #C9C9DC </span>
+                  <span className='main-color background'><span className='color-type background'>Primary</span> Dark Purple <br/> #C9C9DC</span>
+                  <span className='main-color white'><span className='color-type white'>Primary</span> White <br/> #FFFFFF</span>
+                  <span className='main-color purple'><span className='color-type purple'>Secondary</span> Blue-Violet <br/> #5B45FF</span>
+                  <span className='main-color Light-Lavender'><span className='color-type Light-Lavender'>Secondary</span> Light Lavender <br/> #ABA3FF</span>
+                  <span className='main-color Blue-Grey'><span className='color-type Blue-Grey'>Secondary</span> Muted Blue-Grey <br/> #8C8DB3</span>
+                </div>
+                <div className='state-colors'>
+                  <span className='state-color draft'>Draft<br/>#FFAD60</span>
+                  <span className='state-color progress'>In Progress<br/>#FFAD60</span>
+                  <span className='state-color accepted'>Accepted<br/>#93C357</span>
+                  <span className='state-color rejected'>Rejected<br/>#CC5759</span>
+                </div>
+                </div>
+                <div className='typography'>
+                  <h1>Aa</h1>
+                  <h2>Aa</h2>
+                  <h3>Aa</h3>
+                  <span>Inter <div className='font-title'>Font</div></span>
+                </div>
+              </div>
+              <div className='content-right'>
+                <img src={figma} alt="Figma Design" className='figma-image'/>
+                <h6>The design uses a modern purple-based palette with white for contrast, and status colors (yellow, green, red) for clarity. The Inter font was chosen for its readability and clean look. Mockups in Figma follow a minimalist, responsive design for both employee and manager interfaces.</h6>
               </div>
             </div>
             </div>
