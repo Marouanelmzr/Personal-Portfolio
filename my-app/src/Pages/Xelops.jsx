@@ -9,12 +9,25 @@ import { IoIosLock } from "react-icons/io";
 import { IoPencil } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
 import figma from '../assets/images/figma-xelops.png';
+import collaborateur from '../assets/images/collaborateur-page.png';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 function App() {
   const Navigate = useNavigate();
 
   const prototypeScreen = useRef(null);
+
+  const textRef = useRef(null);
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  const scrollRef = useRef(null);
+
 
   return (
     <>
@@ -110,6 +123,31 @@ function App() {
                 <img src={figma} alt="Figma Design" className='figma-image'/>
                 <h6>The design uses a modern purple-based palette with white for contrast, and status colors (yellow, green, red) for clarity. The Inter font was chosen for its readability and clean look. Mockups in Figma follow a minimalist, responsive design for both employee and manager interfaces.</h6>
               </div>
+            </div>
+            <div className='features-wrapper' ref={sectionRef}>
+            <div className='features-breakdown' ref={triggerRef}>
+              <h3>Features Breakdown</h3>
+              <div className='features-content'>
+                <div className='left-text' >
+                  <div className='left-text-scrollable'>
+                    <ScrollReveal containerRef={scrollRef} className="scrollreveal">
+                      <h6>The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status. The goal is to offer a clear, intuitive interface that helps interns stay informed and easily manage their leave requests.
+                      </h6>
+                    </ScrollReveal>
+                  </div>
+                  <div ref={scrollRef} className='ghostscroll'>
+                    <div style={{ height: 2200 }} />
+                    </div>
+                    
+                  </div>
+                <div>
+                  <img src={collaborateur} alt="Collaborateur Page" className='collaborateur-image'/>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div className='conclusion-section'>
+              <h6>The conclusion section summarizes the key points discussed in the presentation, reinforcing the importance of the design choices made and their impact on the user experience.</h6>
             </div>
             </div>
         </div>
