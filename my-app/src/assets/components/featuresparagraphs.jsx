@@ -6,7 +6,11 @@ import { PiMouseScrollFill } from "react-icons/pi";
 const paragraphs = [
   "The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status.",
   "The Collaborator Page features a navigation with two sections: Collaborator and Manager. Simple employees can access only the Collaborator section, while managers have access to both, allowing them to switch views as needed. This ensures clear, role-based access while keeping the interface simple and intuitive.",
-  "The Collaborator Page also includes features for leave management. The “Solde de congé” displays the remaining leave balance using a progress bar, giving users a clear overview of their available days. The “Faire une demande d'absence” allows employees to submit new leave requests."
+  "The Collaborator Page also includes features for leave management. The “Solde de congé” displays the remaining leave balance using a progress bar, giving users a clear overview of their available days. The “Faire une demande d'absence” allows employees to submit new leave requests.",
+  "The page also includes a history table that displays all submitted leave requests. Each entry shows the submission date, start and end dates, total number of days, type of leave, and the status (Pending, Approved, Rejected, or Draft). Requests in Draft status remain editable, allowing employees to make changes before final submission.",
+  "The leave request form allows employees to submit details about their absence, including the start and end dates and the reason for the leave. Users can choose to save the request as a draft for later editing or submit it directly for approval, providing flexibility and control over their leave management.",
+  "The Manager Page provides an organized overview of leave requests submitted by team members under their supervision. Each request is displayed as a card showing all relevant details, and managers can open a card to approve or reject the request. The page also includes a search feature, allowing managers to quickly find specific team members’ requests, ensuring efficient and focused management of absences."
+
 ];
 
 const PinnedParagraph = React.forwardRef(
@@ -47,7 +51,7 @@ const PinnedParagraph = React.forwardRef(
     return (
       <div >
         <div className="left-text-scrollable">
-          <ScrollReveal containerRef={scrollRef} className="scrollreveal">
+          <ScrollReveal containerRef={scrollRef} className={`scrollreveal`}>
             <motion.h6>
               {words.map((word, i) => (
                 <motion.span
@@ -72,25 +76,28 @@ const PinnedParagraph = React.forwardRef(
   }
 );
 
-export default function ParagraphsStack({ onIndexChange }) {
+export default function ParagraphsStack({ onIndexChange, onProgressChange }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRefs = useRef(paragraphs.map(() => React.createRef()));
 
   const handleProgress = (p, index) => {
     if (p >= 1 && index < paragraphs.length - 1) {
-      setCurrentIndex(index + 1); // scroll down → next paragraph
+      setCurrentIndex(index + 1);
       if (onIndexChange) onIndexChange(index + 1);
     } else if (p <= 0 && index > 0) {
-      setCurrentIndex(index - 1); // scroll up → previous paragraph
+      setCurrentIndex(index - 1);
       if (onIndexChange) onIndexChange(index - 1);
+    }
+
+    // For the 4th and 5th paragraphs, report progress
+    if ((index === 3 || index === 5) && onProgressChange) {
+      onProgressChange(p);
     }
   };
 
-  // Call callback on mount to set initial index
   useEffect(() => {
     if (onIndexChange) onIndexChange(currentIndex);
   }, []);
-
   return (
     <div
       className="left-text"
@@ -122,4 +129,3 @@ export default function ParagraphsStack({ onIndexChange }) {
     </div>
   );
 }
-

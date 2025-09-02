@@ -12,6 +12,12 @@ import figma from '../assets/images/figma-xelops.png';
 import collaborateur from '../assets/images/collaborateur-page.png';
 import navigation from '../assets/images/collaborateur-page-navigation.png';
 import solde from '../assets/images/collaborateur-page-solde.png';
+import table from '../assets/images/collaborateur-page-table.png';
+import accepter from '../assets/images/figma-xelops-accepter.png';
+import demande from '../assets/images/figma-xelops-demande.png';
+import modification from '../assets/images/collaborateur-page-modification.png';
+import manager from '../assets/images/figma-xelops-manager.png';
+import search from '../assets/images/manager-page-search.png';
 import gsap from 'gsap';
 import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,10 +31,14 @@ function App() {
   const prototypeScreen = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const images = [
     collaborateur, // for paragraph 0
     navigation,       // for paragraph 1
-    solde            // for paragraph 2
+    solde,            // for paragraph 2
+    table,            // for paragraph 3
+    demande,         // for paragraph 4
+    manager          // for paragraph 5
   ];
 
 
@@ -131,7 +141,7 @@ function App() {
             <div className='features-breakdown' >
               <h3>Features Breakdown</h3>
               <div className='features-content'>
-                <ParagraphsStack onIndexChange={setActiveIndex} /> 
+                <ParagraphsStack onIndexChange={setActiveIndex} onProgressChange={setProgress} />
                 <div className='collaborateur-container'>
   {images.map((img, i) => (
     <motion.img
@@ -147,6 +157,41 @@ function App() {
       }}
     />
   ))}
+{activeIndex === 3 && (
+  <motion.img
+    key={progress < 0.75 ? "extra-4-a" : "extra-4-b"} // Key changes on progress
+    src={progress < 0.75 ? table : modification}
+    alt="Extra for Paragraph 4"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    className="collaborateur-image"
+    style={{
+      zIndex: 3,
+    }}
+  />
+)}
+{activeIndex === 5 && (
+  <motion.img
+    key={  
+      progress < 0.45 ? "extra-5-a" :
+      progress < 0.7 ? "extra-5-b" : "extra-5-c" } // Key changes on progress
+    src={
+      progress < 0.45 ? manager : 
+      progress < 0.7 ? accepter : search
+    }
+    alt="Extra for Paragraph 5"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    className="collaborateur-image"
+    style={{
+      zIndex: 4,
+    }}
+  />
+)}
                 </div>
               </div>
             </div>

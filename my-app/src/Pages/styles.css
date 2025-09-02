@@ -387,19 +387,21 @@
 
 .features-wrapper {
   position: relative;   /* stays in normal flow for pinning */
-  width: 100%;
+  width: 100vw;
   height: 120vh;        /* enough height for scroll */
   margin-top: 12rem;
+    background-color: #252622;
 }
 .features-breakdown{
   display: flex;
   z-index: 0;
   position: absolute;
-  left: -29rem;
+  left:  -24vw;
+  width: 100vw;
+  height: 120vh;        
   flex-direction: column;
   gap: 1rem;
-  height: 120vh;
-  width: 100vw;
+
   background-color: #252622;
 
 }
@@ -465,7 +467,7 @@
   text-align: start;
   font-family: var(--ff);
   font-size: var(--fs-xsmall);
-  line-height: 3;
+  line-height: 2.5;
   font-weight: var(--fw-regular);
   color: var(--color-background);
   letter-spacing: 1px;
@@ -518,11 +520,7 @@
   letter-spacing: 1px;
   padding: 1rem 2rem;
 }
-.word {
-  opacity: 0.1;
-  color: var(--color-background);
-  transition: opacity 0.2s ease;
-}
+
 .conclusion-section{
   display: flex;
   position: relative;
