@@ -10,9 +10,11 @@ import { IoPencil } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
 import figma from '../assets/images/figma-xelops.png';
 import collaborateur from '../assets/images/collaborateur-page.png';
+import navigation from '../assets/images/collaborateur-page-navigation.png';
+import solde from '../assets/images/collaborateur-page-solde.png';
 import gsap from 'gsap';
 import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ParagraphsStack from '../assets/components/featuresparagraphs.jsx';
 
 
@@ -21,6 +23,13 @@ function App() {
   const Navigate = useNavigate();
 
   const prototypeScreen = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const images = [
+    collaborateur, // for paragraph 0
+    navigation,       // for paragraph 1
+    solde            // for paragraph 2
+  ];
 
 
   return (
@@ -122,9 +131,22 @@ function App() {
             <div className='features-breakdown' >
               <h3>Features Breakdown</h3>
               <div className='features-content'>
-                <ParagraphsStack/> 
-                <div>
-                  <img src={collaborateur} alt="Collaborateur Page" className='collaborateur-image'/>
+                <ParagraphsStack onIndexChange={setActiveIndex} /> 
+                <div className='collaborateur-container'>
+  {images.map((img, i) => (
+    <motion.img
+      key={i}
+      src={img}
+      alt={`Page ${i}`}
+      initial={false} // no animation on mount
+      animate={{ opacity: i === activeIndex ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
+      className='collaborateur-image'
+      style={{
+        zIndex: i === activeIndex ? 2 : 1,
+      }}
+    />
+  ))}
                 </div>
               </div>
             </div>

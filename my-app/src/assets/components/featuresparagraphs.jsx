@@ -5,8 +5,8 @@ import { PiMouseScrollFill } from "react-icons/pi";
 
 const paragraphs = [
   "The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status.",
-  "Second paragraph appears after the first one finishes, highlighting each word from start to end.",
-  "Third paragraph comes last, also highlighting word by word as you scroll."
+  "The Collaborator Page features a navigation with two sections: Collaborator and Manager. Simple employees can access only the Collaborator section, while managers have access to both, allowing them to switch views as needed. This ensures clear, role-based access while keeping the interface simple and intuitive.",
+  "The Collaborator Page also includes features for leave management. The “Solde de congé” displays the remaining leave balance using a progress bar, giving users a clear overview of their available days. The “Faire une demande d'absence” allows employees to submit new leave requests."
 ];
 
 const PinnedParagraph = React.forwardRef(
@@ -72,30 +72,39 @@ const PinnedParagraph = React.forwardRef(
   }
 );
 
-export default function ParagraphsStack() {
+export default function ParagraphsStack({ onIndexChange }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRefs = useRef(paragraphs.map(() => React.createRef()));
 
   const handleProgress = (p, index) => {
     if (p >= 1 && index < paragraphs.length - 1) {
       setCurrentIndex(index + 1); // scroll down → next paragraph
+      if (onIndexChange) onIndexChange(index + 1);
     } else if (p <= 0 && index > 0) {
       setCurrentIndex(index - 1); // scroll up → previous paragraph
+      if (onIndexChange) onIndexChange(index - 1);
     }
   };
 
+  // Call callback on mount to set initial index
+  useEffect(() => {
+    if (onIndexChange) onIndexChange(currentIndex);
+  }, []);
+
   return (
-    <div className="left-text"   data-cursor="Scroll Down"
-        onMouseEnter={() => {
-            window.dispatchEvent(
-            new CustomEvent("cursor-label", { detail: { label: "Scroll Down" } })
-            );
-        }}
-        onMouseLeave={() => {
-            window.dispatchEvent(
-             new CustomEvent("cursor-label", { detail: { label: "" } })
-            );
-        }}
+    <div
+      className="left-text"
+      data-cursor="Scroll Down"
+      onMouseEnter={() => {
+        window.dispatchEvent(
+          new CustomEvent("cursor-label", { detail: { label: "Scroll Down" } })
+        );
+      }}
+      onMouseLeave={() => {
+        window.dispatchEvent(
+          new CustomEvent("cursor-label", { detail: { label: "" } })
+        );
+      }}
     >
       {paragraphs.map((p, i) => (
         <PinnedParagraph
@@ -108,8 +117,9 @@ export default function ParagraphsStack() {
         />
       ))}
       <div className="scroll-indicator">
-        <PiMouseScrollFill className="icon-scroll"/>
+        <PiMouseScrollFill className="icon-scroll" />
       </div>
     </div>
   );
 }
+
