@@ -11,10 +11,9 @@ import { IoCodeSlash } from "react-icons/io5";
 import figma from '../assets/images/figma-xelops.png';
 import collaborateur from '../assets/images/collaborateur-page.png';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
+import { useScroll } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
 
 
 function App() {
@@ -22,11 +21,31 @@ function App() {
 
   const prototypeScreen = useRef(null);
 
-  const textRef = useRef(null);
-  const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
+// State and refs
+const [currentIndex, setCurrentIndex] = useState(0);
+const scrollRef = useRef(null);
 
-  const scrollRef = useRef(null);
+// Track scroll progress of the scroll container
+const { scrollYProgress } = useScroll({ container: scrollRef });
+
+const paragraphs = [
+  "The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status. The goal is to offer a clear, intuitive interface that helps interns stay informed and easily manage their leave requests.",
+  "Second paragraph appears after the first one finishes.",
+  "Third paragraph comes last with the same effect.",
+];
+
+const totalParagraphs = paragraphs.length;
+const segment = 1 / totalParagraphs;
+
+useEffect(() => {
+  const unsubscribe = scrollYProgress.on("change", (latest) => {
+    const newIndex = Math.min(Math.floor(latest / segment), totalParagraphs - 1);
+    if (newIndex !== currentIndex) {
+      setCurrentIndex(newIndex);
+    }
+  });
+  return () => unsubscribe();
+}, [scrollYProgress, currentIndex, totalParagraphs]);
 
 
   return (
@@ -124,15 +143,14 @@ function App() {
                 <h6>The design uses a modern purple-based palette with white for contrast, and status colors (yellow, green, red) for clarity. The Inter font was chosen for its readability and clean look. Mockups in Figma follow a minimalist, responsive design for both employee and manager interfaces.</h6>
               </div>
             </div>
-            <div className='features-wrapper' ref={sectionRef}>
-            <div className='features-breakdown' ref={triggerRef}>
+            <div className='features-wrapper' >
+            <div className='features-breakdown' >
               <h3>Features Breakdown</h3>
               <div className='features-content'>
                 <div className='left-text' >
                   <div className='left-text-scrollable'>
                     <ScrollReveal containerRef={scrollRef} className="scrollreveal">
-                      <h6>The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status. The goal is to offer a clear, intuitive interface that helps interns stay informed and easily manage their leave requests.
-                      </h6>
+                      <h6>{paragraphs[currentIndex]}</h6>
                     </ScrollReveal>
                   </div>
                   <div ref={scrollRef} className='ghostscroll'>
