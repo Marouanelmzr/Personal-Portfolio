@@ -72,7 +72,7 @@ useEffect(() => {
 
   return (
     <div>
-      <div ref={dotRef}  className={`cursor-dot ${label ? "hover" : ""} ${label === "Copied!" ? "copied" : ""}`}>
+      <div ref={dotRef}  className={`cursor-dot ${label ? "hover" : ""} ${label === "Copied!" ? "copied" : ""} ${label === "Scroll Down" ? "scroll" : ""}`}>
         {label && <span className="cursor-label">{label}</span>}
       </div>
     </div>

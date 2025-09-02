@@ -428,9 +428,12 @@
   position: relative;
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
   overflow: hidden;
+  flex-direction: column;
+  display: flex;
 }
 .left-text-scrollable{
   position: absolute;
+  z-index: 10;
   padding: 2rem 1rem;
   height: 360px;
   display: flex;
@@ -438,6 +441,22 @@
   justify-content: start;
   z-index: 5;
   pointer-events: none;
+}
+.scroll-indicator{
+  display: flex;
+  z-index: 11;
+  position: absolute;
+  bottom: 0;
+  height: 3rem;
+  width: 100%;
+  justify-content: end;
+  align-items: start;
+  font-size: var(--fs-h5);
+  color: var(--color-background);
+}
+.icon-scroll{
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
 .scrollreveal{
   width: 100%;

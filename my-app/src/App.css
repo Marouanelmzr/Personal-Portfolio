@@ -138,7 +138,7 @@ h4 {
   z-index: 9999;
   color: var(--color-primary-hover);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4),
-              -5px -5px 15px rgba(255, 255, 255, 0.7);
+              -5px -5px 15px rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(15px);
   transition: width 0.2s ease, height 0.2s ease, transform 0.2s ease, ;
 }
@@ -158,6 +158,9 @@ h4 {
   background-color: var(--color-green);
   color: var(--color-background);
   transition: all 0.2s ease;
+}
+.cursor-dot.scroll {
+  color: var(--color-ultralight);
 }
 
 
