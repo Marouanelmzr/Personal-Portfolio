@@ -10,7 +10,8 @@ const paragraphs = [
   "The page includes a detailed history table displaying all submitted leave requests. Each entry shows the submission date, start and end dates, total number of days, type of leave, and current status (Pending, Approved, Rejected, or Draft). Requests saved as Draft remain editable, enabling employees to make modifications before final submission.",
   "The table is designed to handle large datasets efficiently. It displays five rows per page and utilizes a backend-driven pagination system, rather than performing pagination on the frontend. This approach ensures fast response times and minimal client-side processing by fetching only the required subset of data from the SQL database for each page request, improving scalability and performance for larger teams.",
   "The leave request form allows employees to provide comprehensive details regarding their absence, including start and end dates and the reason for leave. Users can choose to save a request as a draft for later editing or submit it directly for approval, offering flexibility and greater control over leave management.",
-  "The Manager Page offers an organized overview of leave requests submitted by team members under the manager’s supervision. Each request is displayed as a card containing all relevant details, and managers can open a card to approve or reject the request. The page also features a search function, enabling managers to quickly locate specific team members’ requests and manage absences efficiently and effectively."
+  "The Manager Page offers an organized overview of leave requests submitted by team members under the manager’s supervision. Each request is displayed as a card containing all relevant details, and managers can open a card to approve or reject the request. The page also features a search function, enabling managers to quickly locate specific team members’ requests and manage absences efficiently and effectively.",
+  "Both the Employee and Manager Pages are fully responsive, ensuring an optimal experience across all devices and screen sizes. The layout, navigation, and interactive elements automatically adjust to desktops, tablets, and mobile devices, allowing users to access leave information, submit requests, or manage team absences efficiently, regardless of the device they are using."
 
 ];
 
@@ -129,7 +130,7 @@ export default function ParagraphsStack({ onIndexChange, onProgressChange }) {
       </div>
       <div className="paragraph-counter">
         <h4>
-          <span className='bold'>{currentIndex + 1}</span> Of <span className='bold'>7</span>
+          <span className='bold'>{currentIndex + 1}</span> Of <span className='bold'>8</span>
           
           </h4>
       </div>

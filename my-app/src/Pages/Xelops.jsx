@@ -18,11 +18,13 @@ import demande from '../assets/images/figma-xelops-demande.png';
 import modification from '../assets/images/collaborateur-page-modification.png';
 import manager from '../assets/images/figma-xelops-manager.png';
 import search from '../assets/images/manager-page-search.png';
+import responsive from '../assets/images/responsive-pages.png';
 import gsap from 'gsap';
 import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
 import { motion, AnimatePresence } from "framer-motion";
 import ParagraphsStack from '../assets/components/featuresparagraphs.jsx';
 import ContactSection from '../assets/components/footer.jsx';
+
 
 
 
@@ -40,7 +42,8 @@ function App() {
     table,            // for paragraph 3
     table,            // for paragraph 4 (initially same as paragraph 3)
     demande,         // for paragraph 4
-    manager          // for paragraph 5
+    manager,         // for paragraph 5
+    responsive       // for paragraph 6
   ];
 
 
