@@ -1,6 +1,6 @@
 import React from "react";
 import { FaRegCopy, FaArrowRight } from "react-icons/fa";
-import vibrance from '../images/vibrancePortfolio.png' // Adjust path as needed
+import vibrance from '../images/VibrancePortfolio.png' // Adjust path as needed
 
 const ContactSection = () => {
   const handleCopyEmail = () => {

@@ -1,16 +1,16 @@
 import { useState , useEffect, useRef} from 'react'
 import './App.css'
-import moroccandeco from './assets/images/moroccandeco.png'
-import moroccanlogo from './assets/images/Moroccanlogo.png'
-import instagramlogo from './assets/images/instagramlogo.png'
-import twitterlogo from './assets/images/twitterlogo.png'
-import tstreched from './assets/images/T-streched.png'
-import sahara from './assets/images/Saharatimeline.png'
+import moroccandeco from './assets/images/moroccandeco.png';
+import moroccanlogo from './assets/images/Moroccanlogo.png';
+import instagramlogo from './assets/images/instagramlogo.png';
+import twitterlogo from './assets/images/twitterlogo.png';
+import tstreched from './assets/images/T-streched.png';
+import sahara from './assets/images/Saharatimeline.png';
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import Paragraph from './assets/components/paragraph.jsx'
 import CursorDot from './assets/components/CursorDot.jsx';
-import marouanesketch from './assets/images/marouanesketch.png'
+import marouanesketch from './assets/images/marouanesketch.png';
 import { IoLogoJavascript } from "react-icons/io5";
 import { SiTypescript } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
@@ -24,13 +24,11 @@ import { SiAdobeillustrator } from "react-icons/si";
 import { SiFigma } from "react-icons/si";
 import { SiBlender } from "react-icons/si";
 import { SiCinema4D } from "react-icons/si";
-import zbrush from './assets/images/zbrush.webp'
-import substancepainter from './assets/images/substance-painter.png'
-import { FaRegCopy } from "react-icons/fa6";
+import zbrush from './assets/images/zbrush.webp';
+import substancepainter from './assets/images/substance-painter.png';
 import { FaArrowRight } from "react-icons/fa6";
-import vibrance from './assets/images/vibrancePortfolio.png'
-import xelopsimage from './assets/images/xelopsimage.jpg'
-import mzrwebsite from './assets/images/mzrwebsite.jpg'
+import xelopsimage from './assets/images/xelopsimage.jpg';
+import mzrwebsite from './assets/images/mzrwebsite.jpg';
 import { useNavigate } from 'react-router-dom';
 import ContactSection from './assets/components/footer.jsx'
 
