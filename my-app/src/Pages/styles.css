@@ -388,7 +388,7 @@
   width: 100vw;
   height: 120vh;        /* enough height for scroll */
   margin-top: 0rem;
-    background-color: #252622;
+  background: linear-gradient(135deg, #1c1c1b 0%, #2a2a28 100%);
 }
 .features-breakdown{
   display: flex;
@@ -397,7 +397,6 @@
   flex-direction: column;
   gap: 1rem;
 
-  background-color: #252622;
 
 }
 .features-breakdown h3{

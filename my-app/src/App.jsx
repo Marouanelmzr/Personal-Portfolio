@@ -1,4 +1,4 @@
-import { useState , useEffect, use} from 'react'
+import { useState , useEffect, useRef} from 'react'
 import './App.css'
 import moroccandeco from './assets/images/moroccandeco.png'
 import moroccanlogo from './assets/images/Moroccanlogo.png'
@@ -38,6 +38,49 @@ import ContactSection from './assets/components/footer.jsx'
 function App() {
 
   const Navigate = useNavigate();
+
+  const navRef = useRef(null);                 // element we attach animation listener to
+  const [animateLanding, setAnimateLanding] = useState(false);
+
+  useEffect(() => {
+    // DEV: uncomment this line or keep it active while developing so you can re-see the animation
+    // (Vite provides import.meta.env.DEV; if you use CRA replace with process.env.NODE_ENV === 'development')
+    if (import.meta?.env?.DEV) sessionStorage.removeItem("landingShown");
+
+    const hasSeen = sessionStorage.getItem("landingShown") === "true";
+    if (!hasSeen) {
+      setAnimateLanding(true);
+
+      const el = navRef.current;
+      let fallback;
+
+      const finish = () => {
+        sessionStorage.setItem("landingShown", "true");
+        setAnimateLanding(false);
+        if (el) el.removeEventListener("animationend", onEnd);
+        clearTimeout(fallback);
+      };
+
+      const onEnd = () => finish();
+
+      if (el) {
+        el.addEventListener("animationend", onEnd, { once: true });
+        // fallback in case animationend doesn't fire (duration + small buffer)
+        fallback = setTimeout(finish, 2000);
+      } else {
+        // element not found yet -> still set a fallback, will run when mounted (safe)
+        fallback = setTimeout(finish, 2000);
+      }
+
+      return () => {
+        if (el) el.removeEventListener("animationend", onEnd);
+        clearTimeout(fallback);
+      };
+    } else {
+      // already seen this session, don't animate
+      setAnimateLanding(false);
+    }
+  }, []);
 
   const labels = {
           0: "Landing",
@@ -186,7 +229,7 @@ useEffect(() => {
       <div class="blur-bottom"> 
       </div>
       <div className='nav-wrapper'>
-        <div className='navigation-container'>
+        <div className={`navigation-container ${animateLanding ? "fade-in-navigation" : ""}`}>
           <div className='navig-clock-main'>
             {[...Array(21)].map((_, i) => 
             <span key={i} style={{ "--index": i + 35, }}  onClick={() => labels[i] && scrollToSection(labels[i].toLowerCase())}   
@@ -206,12 +249,12 @@ useEffect(() => {
         </div>
       </div>
     <section className='Landing-section' id="landing" >
-      <div className='Landing-header-container'>
-        <div className='header-right'>
+      <div className={`Landing-header-container ${animateLanding ? "fade-in-down" : ""}`}>
+        <div className={`header-right ${animateLanding ? "fade-in-left" : ""}`}>
           <h3>MAROUANE ELMOZARIAHI </h3>
           <span className='arabic-text'>مروان المزاريحي</span>
         </div>
-        <div className='header-left'>
+        <div className={`header-left ${animateLanding ? "fade-in-right" : ""}`}>
           <img src={instagramlogo} alt="Instagram Logo" className='social-logo' data-cursor="Instagram"/>
           <img src={twitterlogo} alt="Twitter Logo" className='social-logo' data-cursor="Twitter"/>
           <div className='get-cv' data-cursor="Download">
@@ -219,20 +262,20 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <div className='Landing-Title-Container' >
+      <div className={`Landing-Title-Container ${animateLanding ? "fade-in-up" : ""}`} >
         <h2> 
-            <img src={moroccandeco} alt="Moroccan Decoration" className='moroccan-decoration-title'/> 
-            <span className='Brush-incoming'> Incoming</span> 
+            <img src={moroccandeco} alt="Moroccan Decoration" className={`moroccan-decoration-title ${animateLanding ? "fade-in-up" : ""}`} /> 
+            <span className={`Brush-incoming ${animateLanding ? "fade-in-up" : ""}`}> Incoming</span> 
             <span className='highlight-title color'> S<span className='hide-letter'>O</span>FTWARE </span>
-            <img src={moroccanlogo} alt="Moroccan Logo" className='moroccan-logo' /> ENGINEER
+            <img src={moroccanlogo} alt="Moroccan Logo" className={`moroccan-logo ${animateLanding ? "fade-in-up" : ""}`} /> ENGINEER
         </h2>
       </div>
-        <div className='open-to-work' onClick={() => scrollToSection('contact')} data-cursor="Contact">
+        <div className={`open-to-work ${animateLanding ? "fade-in-up" : ""}`} onClick={() => scrollToSection('contact')} data-cursor="Contact">
           <h4>Open to <span className='highlight-title'>WORK</span> </h4>
           <div className="green-circle"></div>
           <div className="white-circle"></div>
         </div>
-        <div className='bio-container'>
+        <div className={`bio-container ${animateLanding ? "fade-in-up" : ""}`}>
           <h4>Hi, I’m Marouane a designer and aspiring software engineer blending creativity with code. <span class="block">  Passionate about building clean, functional experiences. Currently based in Tangier, Morocco.</span></h4>
         </div>
     </section>

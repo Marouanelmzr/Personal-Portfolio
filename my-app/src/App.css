@@ -334,7 +334,8 @@ h4 {
   z-index: 9999; /* Z-index très élevé pour être au-dessus de tout */
   pointer-events: auto; /* Réactive les interactions pour la navigation */
   
-  /* Animation */
+}
+.fade-in-navigation{
   opacity: 0;
   animation: fadeInNavigation 1.8s ease-out 2.0s forwards;
 }
@@ -470,9 +471,22 @@ h4 {
   margin-left: 5rem;
   margin-top: var(--margin-s);
   
-  /* Animation */
+}
+.fade-in-down{
   opacity: 0;
   animation: fadeInDown 1.2s ease-out 0.3s forwards;
+}
+.fade-in-left{
+  opacity: 0;
+  animation: fadeInLeft 1.4s ease-out 0.5s forwards;
+}
+.fade-in-up{
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out 0.8s forwards;
+}
+.fade-in-right{
+  opacity: 0;
+  animation: fadeInRight 1.4s ease-out 0.7s forwards;
 }
 .Landing-header-container{
   font-size: var(--fs-xsmall);
@@ -483,10 +497,6 @@ h4 {
 .header-right{
   display: flex;
   flex-direction: column;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInLeft 1.4s ease-out 0.5s forwards;
 }
 
 
@@ -497,10 +507,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out 0.8s forwards;
+
 }
 .Landing-Title-Container h2 {
   font-size: var(--fs-title);
@@ -515,20 +522,13 @@ h4 {
   margin-left: 10rem;
   font-family: "Brush Script MT", sans-serif;
   font-size: var(--fs-h2);
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.8s ease-out 1.2s forwards;
 }
 .moroccan-logo {
   position: absolute;
   width: 23px;
   height: 23px;
   margin-left: 11.8rem;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.6s ease-out 1.4s forwards;
+
 }
 .moroccan-decoration-title {
   position: absolute;
@@ -536,10 +536,7 @@ h4 {
   width: 70px;
   height: 70px;
   margin-left: 2.9rem;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.4s ease-out 1.0s forwards;
+
 }
 .hide-letter {
   color: var(--color-background);
@@ -561,10 +558,6 @@ h4 {
   transition: all 0.4s ease;
   margin-top: var(--margin-xxl);
   cursor: pointer;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.4s ease-out 1.4s forwards;
 }
 .open-to-work h4 {
   margin-left: 1.7rem;
@@ -620,10 +613,6 @@ h4 {
   flex-direction: row;
   align-items: center;
   margin-right: 5rem;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInRight 1.4s ease-out 0.7s forwards;
 }
 .social-logo {
   width: 2rem;
@@ -664,10 +653,7 @@ h4 {
   color: var(--color-primary);
   margin-top: 6rem;
   line-height: 2;
-  
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.6s ease-out 1.6s forwards;
+
 }
 
 .block {
@@ -680,7 +666,7 @@ h4 {
   flex-direction: column;
   position: relative;
   margin-top: 12rem;
-  width: 100vw;
+  width: 95vw;
   justify-content: center;
   align-items: center;
   z-index: 1; /* En dessous de la navigation */
@@ -695,9 +681,6 @@ h4 {
   line-height: 0.73;
   letter-spacing: 2px;
   
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out 1.0s forwards;
 }
 
 .crafts-container .crafts-wrapper {
@@ -735,7 +718,7 @@ h4 {
 .craft-image-container{
   width: 96%;
   margin-left: 2%;
-  height: 83%;
+  height: 78%;
   margin-top: 2%;
   border-radius: 10px;
   overflow: hidden;
@@ -743,7 +726,7 @@ h4 {
 .craft-image-container.two{
   width: 96%;
   margin-left: 2%;
-  height: 83%;
+  height: 78%;
   margin-top: 2%;
   border-radius: 10px;
   overflow: hidden;
@@ -757,17 +740,17 @@ h4 {
   overflow: hidden;
 }
 .craft-image {
-  width: 195%;
+  width: 185%;
   height: auto;
-  margin-top: -12rem;
-  margin-left: -16rem;
+  margin-top: -12.5rem;
+  margin-left: -14rem;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 .craft-image.two{
-  width: 165%;
+  width: 155%;
   margin-top: -6rem;
-  margin-left: -13rem;
+  margin-left: -10rem;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -787,10 +770,10 @@ h4 {
   transform:rotate(0deg); ;
 }
 .crafts-container .crafts-wrapper .craft.one {
-  height: 40rem;
+  height: 30rem;
 }
 .crafts-container .crafts-wrapper .craft.three {
-  height: 40rem;
+  height: 30rem;
 }
 .crafts-container .crafts-wrapper .craft.two {
   height: 20rem;

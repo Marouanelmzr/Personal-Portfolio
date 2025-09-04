@@ -29,7 +29,20 @@ import ContactSection from '../assets/components/footer.jsx';
 
 
 function App() {
-  const Navigate = useNavigate();
+    const navigate = useNavigate();
+
+      const handleBack = () => {
+    // Go back to main page
+    navigate("/", { replace: false });
+
+    // Wait for DOM to update, then scroll to #craft
+    setTimeout(() => {
+      const craftSection = document.getElementById("craft");
+      if (craftSection) {
+        craftSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 30); // 30ms delay ensures main page is mounted
+  };
 
   const prototypeScreen = useRef(null);
 
@@ -54,7 +67,7 @@ function App() {
      <div class="blur-bottom"> 
       </div>
      <section className='craft-page-header'>
-        <div className='craft-page-header-back' onClick={() => Navigate(-1)}>
+        <div className='craft-page-header-back'  onClick={handleBack}>
             <IoReturnUpBack />
             <p>Back</p>
         </div>
