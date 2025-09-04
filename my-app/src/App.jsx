@@ -267,7 +267,6 @@ useEffect(() => {
             <span className='highlight-title color'> S<span className='hide-letter'>O</span>FTWARE </span>
             <img src={moroccanlogo} alt="Moroccan Logo" className={`moroccan-logo ${animateLanding ? "fade-in-up" : ""}`} /> ENGINEER
         </h2>
-      </div>
         <div className={`open-to-work ${animateLanding ? "fade-in-up" : ""}`} onClick={() => scrollToSection('contact')} data-cursor="Contact">
           <h4>Open to <span className='highlight-title'>WORK</span> </h4>
           <div className="green-circle"></div>
@@ -276,6 +275,7 @@ useEffect(() => {
         <div className={`bio-container ${animateLanding ? "fade-in-up" : ""}`}>
           <h4>Hi, I’m Marouane a designer and aspiring software engineer blending creativity with code. <span class="block">  Passionate about building clean, functional experiences. Currently based in Tangier, Morocco.</span></h4>
         </div>
+      </div>
     </section>
 
     <section className='crafts-container' id='craft'>

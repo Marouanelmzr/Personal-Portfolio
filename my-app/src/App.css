@@ -303,6 +303,8 @@ h4 {
   align-items: center;
   flex-direction: column;
   position: relative;
+  height: 100vh;
+  width: 100vw;
 }
 /* Navigation */
 .nav-wrapper {
@@ -502,8 +504,7 @@ h4 {
 
 .Landing-Title-Container {
   display: flex;
-  height: 145px;
-  margin-top: 13rem;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -512,6 +513,8 @@ h4 {
 .Landing-Title-Container h2 {
   font-size: var(--fs-title);
   letter-spacing: 4px;
+  margin-top: 0;
+  white-space: nowrap;
   
   /* Animation subtile pour le titre principal */
   animation: gentleFloat 4s ease-in-out infinite;
@@ -556,7 +559,7 @@ h4 {
   border: 1px solid var(--color-primary-light);
   border-radius: 50px;
   transition: all 0.4s ease;
-  margin-top: var(--margin-xxl);
+  margin-top: var(--margin-l);
   cursor: pointer;
 }
 .open-to-work h4 {
@@ -651,7 +654,7 @@ h4 {
   font-size: var(--fs-body);
   font-weight: var(--fw-light);
   color: var(--color-primary);
-  margin-top: 6rem;
+  margin-top: 4rem;
   line-height: 2;
 
 }
@@ -665,7 +668,7 @@ h4 {
   z-index: 1;
   flex-direction: column;
   position: relative;
-  margin-top: 12rem;
+  margin-top: 4rem;
   width: 95vw;
   justify-content: center;
   align-items: center;
@@ -1590,4 +1593,28 @@ h4 {
   50% {
     transform: translateY(-3px);
   }
+}
+
+@media (max-width: 1300px) {
+.Landing-Title-Container {
+  scale: 0.9;
+
+}
+.Landing-Title-Container h2 {
+  scale: 0.9;
+}
+}
+
+@media (max-width: 974px) {
+.Landing-Title-Container {
+  scale: 0.7;
+
+}
+.Landing-Title-Container h2 {
+  scale: 0.7;
+}
+.nav-wrapper {
+  display: none;
+
+}
 }
