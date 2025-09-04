@@ -284,7 +284,7 @@ useEffect(() => {
         <h2> <img src={tstreched} alt="T-Stretched" className='t-stretched-title'/> CRAF<span className='hide-letter'>T</span>S</h2>
         <div className='crafts-wrapper'>
           <div className='wrapper-crafts-first'>
-          <div className='craft one' data-cursor="Open" onClick={() => Navigate('/xelops')}>
+          <div className='craft one' data-cursor="Read Case Study" onClick={() => Navigate('/xelops')}>
             <div className='craft-image-container'>
               <img src={xelopsimage} alt="Xelops Project" className='craft-image' />
             </div>
@@ -296,7 +296,7 @@ useEffect(() => {
               <FaArrowRight className='icon-arrow' />
             </div>
           </div>
-          <div className='craft three' data-cursor="Open">
+          <div className='craft three' data-cursor="Coming Soon">
             <div className='craft-image-container two'>
               <img src={mzrwebsite} alt="Xelops Project" className='craft-image two' />
             </div>
