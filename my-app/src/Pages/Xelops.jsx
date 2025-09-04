@@ -22,6 +22,7 @@ import gsap from 'gsap';
 import ScrollReveal from "../assets/animations/scrollreveal.tsx"; 
 import { motion, AnimatePresence } from "framer-motion";
 import ParagraphsStack from '../assets/components/featuresparagraphs.jsx';
+import ContactSection from '../assets/components/footer.jsx';
 
 
 
@@ -37,6 +38,7 @@ function App() {
     navigation,       // for paragraph 1
     solde,            // for paragraph 2
     table,            // for paragraph 3
+    table,            // for paragraph 4 (initially same as paragraph 3)
     demande,         // for paragraph 4
     manager          // for paragraph 5
   ];
@@ -137,71 +139,89 @@ function App() {
                 <h6>The design uses a modern purple-based palette with white for contrast, and status colors (yellow, green, red) for clarity. The Inter font was chosen for its readability and clean look. Mockups in Figma follow a minimalist, responsive design for both employee and manager interfaces.</h6>
               </div>
             </div>
-            <div className='features-wrapper' >
+            </div>
+        </div>
+     </section>
+     <section className='features-wrapper' >
             <div className='features-breakdown' >
               <h3>Features Breakdown</h3>
               <div className='features-content'>
                 <ParagraphsStack onIndexChange={setActiveIndex} onProgressChange={setProgress} />
                 <div className='collaborateur-container'>
-  {images.map((img, i) => (
-    <motion.img
-      key={i}
-      src={img}
-      alt={`Page ${i}`}
-      initial={false} // no animation on mount
-      animate={{ opacity: i === activeIndex ? 1 : 0 }}
-      transition={{ duration: 0.5 }}
-      className='collaborateur-image'
-      style={{
-        zIndex: i === activeIndex ? 2 : 1,
-      }}
-    />
-  ))}
-{activeIndex === 3 && (
-  <motion.img
-    key={progress < 0.75 ? "extra-4-a" : "extra-4-b"} // Key changes on progress
-    src={progress < 0.75 ? table : modification}
-    alt="Extra for Paragraph 4"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.5 }}
-    className="collaborateur-image"
-    style={{
-      zIndex: 3,
-    }}
-  />
-)}
-{activeIndex === 5 && (
-  <motion.img
-    key={  
-      progress < 0.45 ? "extra-5-a" :
-      progress < 0.7 ? "extra-5-b" : "extra-5-c" } // Key changes on progress
-    src={
-      progress < 0.45 ? manager : 
-      progress < 0.7 ? accepter : search
-    }
-    alt="Extra for Paragraph 5"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.5 }}
-    className="collaborateur-image"
-    style={{
-      zIndex: 4,
-    }}
-  />
-)}
+                  {images.map((img, i) => (
+                    <motion.img
+                      key={i}
+                      src={img}
+                      alt={`Page ${i}`}
+                      initial={false} // no animation on mount
+                      animate={{ opacity: i === activeIndex ? 1 : 0 }}
+                      transition={{ duration: 0.5 }}
+                      className='collaborateur-image'
+                      style={{
+                        zIndex: i === activeIndex ? 2 : 1,
+                      }}
+                    />
+                  ))}
+                {activeIndex === 3 && (
+                  <motion.img
+                    key={progress < 0.75 ? "extra-4-a" : "extra-4-b"} // Key changes on progress
+                    src={progress < 0.75 ? table : modification}
+                    alt="Extra for Paragraph 4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="collaborateur-image"
+                    style={{
+                      zIndex: 3,
+                    }}
+                  />
+                )}
+                {activeIndex === 6 && (
+                  <motion.img
+                    key={  
+                      progress < 0.45 ? "extra-6-a" :
+                      progress < 0.7 ? "extra-6-b" : "extra-6-c" } // Key changes on progress
+                    src={
+                      progress < 0.45 ? manager : 
+                      progress < 0.7 ? accepter : search
+                    }
+                    alt="Extra for Paragraph 6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="collaborateur-image"
+                    style={{
+                      zIndex: 4,
+                    }}
+                  />
+                )}
                 </div>
               </div>
             </div>
-            </div>
-            <div className='conclusion-section'>
-              <h6>The conclusion section summarizes the key points discussed in the presentation, reinforcing the importance of the design choices made and their impact on the user experience.</h6>
-            </div>
-            </div>
-        </div>
-     </section>
+            </section>
+            <section className='conclusion-section'>
+              <h3>Retrospective</h3>
+              <h5>Here are my reflections and key takeaways after completing this project :</h5>
+              <div className='conclusion-content'>
+              <h4>What I Learned</h4>
+                <ul>
+                  <li>Since this was my first collaborative project, I learned how to use GitHub effectively and manage merge conflicts alongside my teammate.</li>
+                  <li>This was also my first internship related to websites (and computer science in general), so gaining insights from our internship supervisor was a valuable experience. We learned to focus not just on aesthetics, but also on usability and performance.</li>
+                  <li>I gained my first hands-on experience with SQL databases and authentication systems. I learned how to implement secure login mechanisms and handle large-scale databases efficiently.</li>
+                  <li>Working under very tight deadlines taught me to prioritize what matters most: usability, meeting the supervisor’s requirements, and keeping the website simple and functional rather than overly focused on appearance.</li>
+                </ul>
+              <h4>What I Would Do Differently</h4>
+              <ul>
+                <li>With more time, I could have improved the micro-interactions, such as animations for filters and dropdowns.</li>
+                <li>I should have spent more time on research and gathered feedback from actual employees to better align the features with user needs.</li>
+                <li>I could have added more precision to absence submissions, such as supporting half days off at the start and end of each absence.</li>
+                <li>I would have implemented Docker containers to ensure the application was easily deployable and consistently accessible across different operating systems. This would have mitigated compatibility issues, particularly for MacBook users, and streamlined both testing and deployment processes.</li>
+              </ul>
+              </div>
+            </section>
+      <ContactSection />
     </div>
     </>
   )

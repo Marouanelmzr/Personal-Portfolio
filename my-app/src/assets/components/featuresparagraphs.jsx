@@ -1,15 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring, AnimatePresence } from "framer-motion";
 import ScrollReveal from "../animations/scrollreveal.tsx";
 import { PiMouseScrollFill } from "react-icons/pi";
 
 const paragraphs = [
-  "The Employee Page is a personalized dashboard for interns to manage their absences. It displays the remaining leave balance, provides a simple form to submit new absence requests, and lists the complete history of previous requests with their status.",
-  "The Collaborator Page features a navigation with two sections: Collaborator and Manager. Simple employees can access only the Collaborator section, while managers have access to both, allowing them to switch views as needed. This ensures clear, role-based access while keeping the interface simple and intuitive.",
-  "The Collaborator Page also includes features for leave management. The “Solde de congé” displays the remaining leave balance using a progress bar, giving users a clear overview of their available days. The “Faire une demande d'absence” allows employees to submit new leave requests.",
-  "The page also includes a history table that displays all submitted leave requests. Each entry shows the submission date, start and end dates, total number of days, type of leave, and the status (Pending, Approved, Rejected, or Draft). Requests in Draft status remain editable, allowing employees to make changes before final submission.",
-  "The leave request form allows employees to submit details about their absence, including the start and end dates and the reason for the leave. Users can choose to save the request as a draft for later editing or submit it directly for approval, providing flexibility and control over their leave management.",
-  "The Manager Page provides an organized overview of leave requests submitted by team members under their supervision. Each request is displayed as a card showing all relevant details, and managers can open a card to approve or reject the request. The page also includes a search feature, allowing managers to quickly find specific team members’ requests, ensuring efficient and focused management of absences."
+  "The Employee Page is a personalized dashboard designed for interns to manage their absences efficiently. It displays the remaining leave balance, provides a straightforward form to submit new leave requests, and presents a comprehensive history of previously submitted requests along with their current status.",
+  "The Collaborator Page features a navigation system with two distinct sections: Collaborator and Manager. Regular employees can access only the Collaborator section, while managers have access to both, enabling them to switch views as necessary. This structure ensures clear, role-based access while maintaining a simple and intuitive interface.",
+  "The Collaborator Page also includes functionality for managing leave. The “Solde de congé” section displays the remaining leave balance using a progress bar, offering users a clear overview of their available days. The “Faire une demande d'absence” feature allows employees to submit new leave requests easily.",
+  "The page includes a detailed history table displaying all submitted leave requests. Each entry shows the submission date, start and end dates, total number of days, type of leave, and current status (Pending, Approved, Rejected, or Draft). Requests saved as Draft remain editable, enabling employees to make modifications before final submission.",
+  "The table is designed to handle large datasets efficiently. It displays five rows per page and utilizes a backend-driven pagination system, rather than performing pagination on the frontend. This approach ensures fast response times and minimal client-side processing by fetching only the required subset of data from the SQL database for each page request, improving scalability and performance for larger teams.",
+  "The leave request form allows employees to provide comprehensive details regarding their absence, including start and end dates and the reason for leave. Users can choose to save a request as a draft for later editing or submit it directly for approval, offering flexibility and greater control over leave management.",
+  "The Manager Page offers an organized overview of leave requests submitted by team members under the manager’s supervision. Each request is displayed as a card containing all relevant details, and managers can open a card to approve or reject the request. The page also features a search function, enabling managers to quickly locate specific team members’ requests and manage absences efficiently and effectively."
 
 ];
 
@@ -90,7 +91,7 @@ export default function ParagraphsStack({ onIndexChange, onProgressChange }) {
     }
 
     // For the 4th and 5th paragraphs, report progress
-    if ((index === 3 || index === 5) && onProgressChange) {
+    if ((index === 3 || index === 6) && onProgressChange) {
       onProgressChange(p);
     }
   };
@@ -125,6 +126,12 @@ export default function ParagraphsStack({ onIndexChange, onProgressChange }) {
       ))}
       <div className="scroll-indicator">
         <PiMouseScrollFill className="icon-scroll" />
+      </div>
+      <div className="paragraph-counter">
+        <h4>
+          <span className='bold'>{currentIndex + 1}</span> Of <span className='bold'>7</span>
+          
+          </h4>
       </div>
     </div>
   );

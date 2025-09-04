@@ -32,6 +32,7 @@ import vibrance from './assets/images/vibrancePortfolio.png'
 import xelopsimage from './assets/images/xelopsimage.jpg'
 import mzrwebsite from './assets/images/mzrwebsite.jpg'
 import { useNavigate } from 'react-router-dom';
+import ContactSection from './assets/components/footer.jsx'
 
 
 function App() {
@@ -422,44 +423,7 @@ useEffect(() => {
         </div>
       </div>
     </section>
-    <section className='contact-container' id='contact'>
-      <img src={vibrance} alt="Vibrance Portfolio" className='vibrance-portfolio' />
-      <div className='contact-wrapper'>
-      <h1>Let's Connect</h1>
-      <h3>Whether you’re interested in working together, have a project in mind, or just want to say hello, feel free to reach out. I’m always open to new ideas, creative exchanges, and meaningful collaborations.</h3>
-      </div>
-      <div className='contact-socials'>
-        <div 
-          className="socials" 
-          data-cursor="Copy Email"
-          onClick={() => {
-            navigator.clipboard.writeText('elmozariahimarouane05@gmail.com');
-            window.dispatchEvent(new CustomEvent("cursor-label", {
-            detail: { label: "Copied!" }
-          }));
-          setTimeout(() => {
-            window.dispatchEvent(new CustomEvent("cursor-label", {
-            detail: { label: "Copy Email" }
-          }));
-          }, 2000);
-        }}>
-          <h2>Email</h2>
-          <FaRegCopy className='icon-social' />
-        </div>
-          <div className='socials' data-cursor="Visit">
-          <h2>X - Twitter</h2>
-          <FaArrowRight className='icon-social rotate' />
-        </div>
-        <div className='socials' data-cursor="Visit">
-          <h2>LinkedIn</h2>
-          <FaArrowRight className='icon-social rotate' />
-        </div>
-        <div className='socials' data-cursor="Visit">
-          <h2>Behance</h2>
-          <FaArrowRight className='icon-social rotate' />
-        </div>
-      </div>
-    </section>
+    <ContactSection />
     </div>
     </>
   )
