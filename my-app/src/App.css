@@ -1423,20 +1423,22 @@ h4 {
 
 
 .contact-container{
+
+}
+.contact-wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   position: relative;
-  margin-top: 10rem;
   width: 80vw;
+  height: 100vh;
   top: 0;
   justify-content: center;
   align-items: center;
   z-index: 1; /* En dessous de la navigation */
-  padding-bottom: 15rem;
   pointer-events: auto; /* Permet les interactions sur le contenu */
 }
-.contact-wrapper{
+.contact-left{
   display: flex;
   flex-direction: column;
   top: 0;

@@ -24,9 +24,9 @@ const ContactSection = () => {
 
   return (
     <section className="contact-container" id="contact">
-      <img src={vibrance} alt="Vibrance Portfolio" className="vibrance-portfolio" />
-
       <div className="contact-wrapper">
+      <img src={vibrance} alt="Vibrance Portfolio" className="vibrance-portfolio" />
+      <div className="contact-left">
         <h1>Let's Connect</h1>
         <h3>
           Whether you’re interested in working together, have a project in mind, or just want to say hello, 
@@ -46,6 +46,7 @@ const ContactSection = () => {
             {social.icon}
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
