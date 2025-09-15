@@ -193,6 +193,7 @@
 }
 .top-part{
   height: 19vw;
+  min-height: 22rem;
 }
 .main-colors{
   display: grid;
@@ -419,6 +420,7 @@
 .left-text{
   width: 24rem; 
   height: 24vw;
+  min-height: 28rem;
   border-radius: 12px;
   background: #31322f;
   position: relative;
@@ -584,4 +586,115 @@
   letter-spacing: 1px;
 }
 
+@media (max-width: 1125px) {
+  
+  .design-system-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  .content-left{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: auto;
+}
+.top-part{
+  height: 45vw;
+  min-height: 22rem;
+}
+.typography{
+  display: flex;
+  width: 7rem;
+  height: 40.5vw;
+  min-height: 22rem;
+  margin-top: 0rem;
+  flex-direction: column;
+  gap: 0rem;
+  margin-left: 2rem;
+}
+.typography h1{
+  font-size: clamp(16px, 4vw, 3.2rem);
+  line-height: 0.8;
+
+}
+.typography h2{
+  font-size: clamp(16px, 4vw, 3.2rem);
+  line-height: 0.8;
+}
+.typography h3{
+  font-size: clamp(16px, 4vw, 3.2rem);
+  line-height: 0;
+}
+.typography span{
+  margin-top: 1.9rem;
+  font-size: clamp(16px, 4vw, 1rem);
+  line-height: 1.2;
+}
+.figma-image{
+  width: 98%;
+  height: auto;
+}
+.left-text-scrollable{
+  position: absolute;
+  z-index: 10;
+  padding: 2rem 1rem;
+  height: 360px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  z-index: 5;
+  pointer-events: none;
+}
+.features-content{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: 20vw;
+  margin-top: 1rem;
+}
+.left-text{
+  width: 18rem; 
+  height: 24vw;
+  min-height: 25rem;
+  border-radius: 12px;
+  background: #31322f;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+}
+.left-text-scrollable{
+  position: absolute;
+  z-index: 10;
+  padding: 2rem 1rem;
+  height: 360px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  z-index: 5;
+}
+.scrollreveal{
+  width: 100%;
+  height: 100%;
+  font-family: var(--ff);
+  font-size: var(--fs-xxsmall);
+  line-height: 2.2;
+  font-weight: var(--fw-regular);
+  color: var(--color-background);
+  letter-spacing: 1px;
+  padding: 0rem 1rem;
+}
+.collaborateur-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44vw;
+  height: 25rem;
+  border-radius: 20px;
+  object-fit: cover;
+}
+}
 
