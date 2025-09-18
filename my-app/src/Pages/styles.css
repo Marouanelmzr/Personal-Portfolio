@@ -34,11 +34,17 @@
 
 .craft-page-content{
     display: flex;
-    margin-top: 12rem;
     width: 100vw;
     flex-direction: column;
     padding: 0;
     padding-left: 48vw;
+}
+.craft-page-content-header-wrapper{
+  display: flex;
+  width: 60vw;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 .craft-page-content h1 {
   font-family: var(--ff);
@@ -146,8 +152,8 @@
   letter-spacing: 1px;
 } 
 .xelops-project-challenge{
-  margin-top: 18rem;
-  padding-bottom: 10rem;
+  margin-top: 4vh;
+  padding-bottom: 16vh;
 }
 .xelops-project-problems{
   display: grid;
@@ -176,7 +182,7 @@
 }
 .Design-system{
   display: flex;
-  padding-bottom: 10rem;
+  padding-bottom: 18vh;
   flex-direction: column;
 }
 .design-system-content{

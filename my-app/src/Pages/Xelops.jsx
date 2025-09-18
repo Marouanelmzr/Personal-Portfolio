@@ -73,10 +73,12 @@ function App() {
         </div>
      </section>
      <section className='craft-page-content'>
+      
+        <div className='xelops-overview' >
+          <div className='craft-page-content-header-wrapper'>
         <div className='craft-page-content-header'>
         <h1>Absence Management platform</h1>
         </div>
-        <div className='xelops-overview' >
             <h2>Internship Project</h2>
             <h4>Founded in 2008, XELOPS Technology (formerly NEOXIA Maroc) is a leading consulting and development company specializing in tailored digital solutions. In June 2025, I had the opportunity to join XELOPS as a Full Stack Developer intern, collaborating closely with one of my schoolmates. During this internship, we designed and developed a custom web application for absence management, enabling the company to efficiently track and manage interns’ leaves. This project combined both front-end and back-end development, focusing on usability, scalability, and seamless integration with their internal processes.</h4>
             <div className='xelops-project-details'>
@@ -99,6 +101,7 @@ function App() {
                       MySQL, OAuth2.0, Github.
                     </p>
                 </span>
+            </div>
             </div>
             <div className='xelops-project-challenge'>
             <h3>Challenge</h3>

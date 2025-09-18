@@ -191,7 +191,7 @@ h4 {
   bottom: 0;
   left: 0;
   width: 99.2%;
-  height: 180px; /* Adjust height as needed */
+  height: 160px; /* Adjust height as needed */
   pointer-events: none; /* Let clicks pass through */
 
   /* Blur background */
