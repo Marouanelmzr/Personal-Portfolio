@@ -178,7 +178,7 @@ h4 {
   overflow-x: hidden;
   top: 0;
   left: 0;
-  width: 100vw;   
+  width: 100%;  
   height: 100vh;
   z-index: 0; 
   background-color: var(--color-background);
@@ -186,11 +186,12 @@ h4 {
 
   align-items: center;
 }
+
 .blur-bottom {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 99.2%;
+  width: 100%;
   height: 160px; /* Adjust height as needed */
   pointer-events: none; /* Let clicks pass through */
 
@@ -1457,6 +1458,7 @@ h4 {
   margin-bottom: 0;
   line-height: 0.73;
   letter-spacing: 2px;
+  text-wrap: nowrap;
 }
 .contact-container h2{
   font-size: var(--fs-small);
@@ -1723,4 +1725,59 @@ h4 {
   display: none;
 }
 
+.contact-wrapper{
+  display: flex;
+  grid-template-columns: none;
+  flex-direction: column;
+  gap: 0rem;
+  position: relative;
+  width: 80vw;
+  height: 100vh;
+  top: 0;
+  justify-content: center;
+  align-items: start;
+  z-index: 1; /* En dessous de la navigation */
+  pointer-events: auto; /* Permet les interactions sur le contenu */
+}
+.contact-left{
+  display: flex;
+  scale: 0.8;
+  flex-direction: column;
+  top: 0;
+  padding-bottom: 2vw;
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0rem;
+}
+.contact-socials{
+  scale: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-right: 0rem;
+  padding-left: 0vw;
+}
+.socials{
+  display: flex;
+  width: 100%;
+  height: 4rem;
+  border-bottom: #cdcdcb 1px solid;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+   transition: all 0.3s ease;
+}
+.vibrance-portfolio{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: -95vw;
+  width: 200vw;
+  height: auto;
+  z-index: -1; /* Behind the content */
+}
 }
