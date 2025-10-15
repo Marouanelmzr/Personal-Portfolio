@@ -25,10 +25,10 @@ To run the project locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Marouanelmzr/portfolio-website.git
+git clone https://github.com/Marouanelmzr/Personal-Portfolio.git
 
 # Navigate into the project folder
-cd portfolio-website
+cd my-app
 
 # Install dependencies
 npm install
